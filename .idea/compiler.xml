@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cllshop-common" />
+        <module name="cllshop-dao" />
+        <module name="cllshop-entity" />
+        <module name="cllshop-service" />
+        <module name="cllshop-webui" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cllshop-es" target="1.5" />
+      <module name="cllshop-redis" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
