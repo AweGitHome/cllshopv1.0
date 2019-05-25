@@ -1,6 +1,8 @@
 package cn.edu.lnsf.controller;
 
+import cn.edu.lnsf.entity.PageBean;
 import cn.edu.lnsf.entity.User;
+import cn.edu.lnsf.service.ProductsService;
 import cn.edu.lnsf.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     UserService userService;
+    ProductsService productsService;
+    @Autowired
+    public void setProductsService(ProductsService productsService) {
+        this.productsService = productsService;
+    }
 
     @Autowired
     public void setUserService(UserService userService) {
@@ -25,5 +32,9 @@ public class UserController {
     @RequestMapping("/login")
     User login(User user){
         return userService.login(user);
+    }
+    @RequestMapping("/test")
+    PageBean test(int curPage){
+        return productsService.getPageData(curPage);
     }
 }

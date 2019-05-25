@@ -87,6 +87,10 @@
             <groupId>cn.edu.lnsf</groupId>
             <artifactId>cllshop-entity</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+        </dependency>
     </dependencies>
 
 
