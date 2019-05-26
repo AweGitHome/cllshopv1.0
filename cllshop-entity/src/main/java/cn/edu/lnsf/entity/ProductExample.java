@@ -685,52 +685,52 @@ public class ProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andHotEqualTo(Date value) {
+        public Criteria andHotEqualTo(Integer value) {
             addCriterion("hot =", value, "hot");
             return (Criteria) this;
         }
 
-        public Criteria andHotNotEqualTo(Date value) {
+        public Criteria andHotNotEqualTo(Integer value) {
             addCriterion("hot <>", value, "hot");
             return (Criteria) this;
         }
 
-        public Criteria andHotGreaterThan(Date value) {
+        public Criteria andHotGreaterThan(Integer value) {
             addCriterion("hot >", value, "hot");
             return (Criteria) this;
         }
 
-        public Criteria andHotGreaterThanOrEqualTo(Date value) {
+        public Criteria andHotGreaterThanOrEqualTo(Integer value) {
             addCriterion("hot >=", value, "hot");
             return (Criteria) this;
         }
 
-        public Criteria andHotLessThan(Date value) {
+        public Criteria andHotLessThan(Integer value) {
             addCriterion("hot <", value, "hot");
             return (Criteria) this;
         }
 
-        public Criteria andHotLessThanOrEqualTo(Date value) {
+        public Criteria andHotLessThanOrEqualTo(Integer value) {
             addCriterion("hot <=", value, "hot");
             return (Criteria) this;
         }
 
-        public Criteria andHotIn(List<Date> values) {
+        public Criteria andHotIn(List<Integer> values) {
             addCriterion("hot in", values, "hot");
             return (Criteria) this;
         }
 
-        public Criteria andHotNotIn(List<Date> values) {
+        public Criteria andHotNotIn(List<Integer> values) {
             addCriterion("hot not in", values, "hot");
             return (Criteria) this;
         }
 
-        public Criteria andHotBetween(Date value1, Date value2) {
+        public Criteria andHotBetween(Integer value1, Integer value2) {
             addCriterion("hot between", value1, value2, "hot");
             return (Criteria) this;
         }
 
-        public Criteria andHotNotBetween(Date value1, Date value2) {
+        public Criteria andHotNotBetween(Integer value1, Integer value2) {
             addCriterion("hot not between", value1, value2, "hot");
             return (Criteria) this;
         }

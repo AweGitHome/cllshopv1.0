@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
-    UserService userService;
-    ProductsService productsService;
+    private UserService userService;
+    private ProductsService productsService;
     @Autowired
     public void setProductsService(ProductsService productsService) {
         this.productsService = productsService;

@@ -3,13 +3,11 @@
 <mapper namespace="cn.edu.lnsf.dao.OrderMapper" >
   <resultMap id="BaseResultMap" type="cn.edu.lnsf.entity.Order" >
     <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cost" property="cost" jdbcType="BIGINT" />
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="orderNum" property="ordernum" jdbcType="VARCHAR" />
     <result column="userid" property="userid" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="INTEGER" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="cn.edu.lnsf.entity.Order" extends="BaseResultMap" >
-    <result column="cost" property="cost" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,27 +68,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, createTime, orderNum, userid, status
+    id, cost, createTime, orderNum, userid, status
   </sql>
-  <sql id="Blob_Column_List" >
-    cost
-  </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="cn.edu.lnsf.entity.OrderExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from orders
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.edu.lnsf.entity.OrderExample" >
     select
     <if test="distinct" >
@@ -105,11 +84,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from orders
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -124,11 +101,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.edu.lnsf.entity.Order" >
-    insert into orders (id, createTime, orderNum, 
-      userid, status, cost
+    insert into orders (id, cost, createTime, 
+      orderNum, userid, status
       )
-    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{ordernum,jdbcType=VARCHAR}, 
-      #{userid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{cost,jdbcType=LONGVARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{cost,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{ordernum,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.lnsf.entity.Order" >
@@ -136,6 +113,9 @@
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
+      </if>
+      <if test="cost != null" >
+        cost,
       </if>
       <if test="createtime != null" >
         createTime,
@@ -149,13 +129,13 @@
       <if test="status != null" >
         status,
       </if>
-      <if test="cost != null" >
-        cost,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cost != null" >
+        #{cost,jdbcType=BIGINT},
       </if>
       <if test="createtime != null" >
         #{createtime,jdbcType=TIMESTAMP},
@@ -168,9 +148,6 @@
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
-      </if>
-      <if test="cost != null" >
-        #{cost,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -186,6 +163,9 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.cost != null" >
+        cost = #{record.cost,jdbcType=BIGINT},
+      </if>
       <if test="record.createtime != null" >
         createTime = #{record.createtime,jdbcType=TIMESTAMP},
       </if>
@@ -198,22 +178,7 @@
       <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
       </if>
-      <if test="record.cost != null" >
-        cost = #{record.cost,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update orders
-    set id = #{record.id,jdbcType=INTEGER},
-      createTime = #{record.createtime,jdbcType=TIMESTAMP},
-      orderNum = #{record.ordernum,jdbcType=VARCHAR},
-      userid = #{record.userid,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=INTEGER},
-      cost = #{record.cost,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -221,6 +186,7 @@
   <update id="updateByExample" parameterType="map" >
     update orders
     set id = #{record.id,jdbcType=INTEGER},
+      cost = #{record.cost,jdbcType=BIGINT},
       createTime = #{record.createtime,jdbcType=TIMESTAMP},
       orderNum = #{record.ordernum,jdbcType=VARCHAR},
       userid = #{record.userid,jdbcType=INTEGER},
@@ -232,6 +198,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.edu.lnsf.entity.Order" >
     update orders
     <set >
+      <if test="cost != null" >
+        cost = #{cost,jdbcType=BIGINT},
+      </if>
       <if test="createtime != null" >
         createTime = #{createtime,jdbcType=TIMESTAMP},
       </if>
@@ -244,24 +213,13 @@
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="cost != null" >
-        cost = #{cost,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.edu.lnsf.entity.Order" >
-    update orders
-    set createTime = #{createtime,jdbcType=TIMESTAMP},
-      orderNum = #{ordernum,jdbcType=VARCHAR},
-      userid = #{userid,jdbcType=INTEGER},
-      status = #{status,jdbcType=INTEGER},
-      cost = #{cost,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.edu.lnsf.entity.Order" >
     update orders
-    set createTime = #{createtime,jdbcType=TIMESTAMP},
+    set cost = #{cost,jdbcType=BIGINT},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
       orderNum = #{ordernum,jdbcType=VARCHAR},
       userid = #{userid,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER}

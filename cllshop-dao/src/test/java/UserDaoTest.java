@@ -1,6 +1,3 @@
-import cn.edu.lnsf.dao.UserMapper;
-import cn.edu.lnsf.entity.User;
-import cn.edu.lnsf.entity.UserExample;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

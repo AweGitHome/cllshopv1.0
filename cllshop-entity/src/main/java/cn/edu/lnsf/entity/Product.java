@@ -21,7 +21,7 @@ public class Product {
 
     private Integer storeid;
 
-    private Date hot;
+    private Integer hot;
 
     private Date hottime;
 
@@ -103,11 +103,11 @@ public class Product {
         this.storeid = storeid;
     }
 
-    public Date getHot() {
+    public Integer getHot() {
         return hot;
     }
 
-    public void setHot(Date hot) {
+    public void setHot(Integer hot) {
         this.hot = hot;
     }
 

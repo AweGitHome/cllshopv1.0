@@ -26,7 +26,7 @@ CREATE TABLE `address` (
   `address` varchar(255) NOT NULL,
   `phone` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gb2312;
 
@@ -39,7 +39,7 @@ DROP TABLE IF EXISTS `bigtype`;
 CREATE TABLE `bigtype` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gb2312;
 
@@ -51,11 +51,11 @@ DROP TABLE IF EXISTS `orders`;
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cost` mediumtext NOT NULL,
+  `cost` bigint(20) NOT NULL,
   `createTime` datetime NOT NULL,
   `orderNum` varchar(255) NOT NULL,
   `userid` int(11) NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gb2312;
 
@@ -70,7 +70,7 @@ CREATE TABLE `orders_product` (
   `num` int(11) NOT NULL,
   `orderid` int(11) NOT NULL,
   `productid` int(11) NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gb2312;
 
@@ -90,15 +90,17 @@ CREATE TABLE `products` (
   `smallTypeId` int(11) NOT NULL,
   `bigTypeId` int(11) NOT NULL,
   `storeId` int(11) NOT NULL,
-  `hot` datetime NOT NULL,
+  `hot` int(11) NOT NULL DEFAULT '0',
   `hotTime` datetime NOT NULL,
   `createTime` datetime NOT NULL,
   `updateTime` datetime NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=gb2312;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=gb2312;
 
 /*Data for the table `products` */
+
+insert  into `products`(`id`,`description`,`name`,`price`,`images`,`stock`,`smallTypeId`,`bigTypeId`,`storeId`,`hot`,`hotTime`,`createTime`,`updateTime`,`status`) values (1,'1','1',1,'1',1,1,1,1,1,'2018-09-06 00:00:00','2018-09-06 00:00:00','2018-09-06 00:00:00',1);
 
 /*Table structure for table `smalltype` */
 
@@ -108,7 +110,7 @@ CREATE TABLE `smalltype` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `bigType` int(11) NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gb2312;
 
@@ -123,7 +125,7 @@ CREATE TABLE `stores` (
   `name` varchar(255) NOT NULL,
   `userid` int(11) NOT NULL,
   `createTime` datetime NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=gb2312;
 
@@ -140,8 +142,8 @@ CREATE TABLE `users` (
   `truename` varchar(20) NOT NULL,
   `gender` int(11) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `status` int(11) NOT NULL,
-  `role` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `role` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=gb2312;
 

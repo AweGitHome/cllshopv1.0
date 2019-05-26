@@ -5,6 +5,8 @@ import java.util.Date;
 public class Order {
     private Integer id;
 
+    private Long cost;
+
     private Date createtime;
 
     private String ordernum;
@@ -13,14 +15,20 @@ public class Order {
 
     private Integer status;
 
-    private String cost;
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Long getCost() {
+        return cost;
+    }
+
+    public void setCost(Long cost) {
+        this.cost = cost;
     }
 
     public Date getCreatetime() {
@@ -53,13 +61,5 @@ public class Order {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public String getCost() {
-        return cost;
-    }
-
-    public void setCost(String cost) {
-        this.cost = cost == null ? null : cost.trim();
     }
 }

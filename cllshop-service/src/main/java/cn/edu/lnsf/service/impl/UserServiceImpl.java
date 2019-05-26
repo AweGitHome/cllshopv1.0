@@ -21,9 +21,8 @@ public class UserServiceImpl implements UserService {
 
     public User login(User user) {
         String userPassword = user.getPassword();
-        String password = DigestUtils.md5DigestAsHex(userPassword.getBytes());
         UserExample example = new UserExample();
-        example.createCriteria().andUsernameEqualTo(user.getUsername()).andPasswordEqualTo(password);
+        example.createCriteria().andUsernameEqualTo(user.getUsername()).andPasswordEqualTo(userPassword);
         List<User> users = userMapper.selectByExample(example);
         if(users!=null&&users.size()>0){
             return users.get(0);

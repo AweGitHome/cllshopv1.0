@@ -11,7 +11,7 @@
     <result column="smallTypeId" property="smalltypeid" jdbcType="INTEGER" />
     <result column="bigTypeId" property="bigtypeid" jdbcType="INTEGER" />
     <result column="storeId" property="storeid" jdbcType="INTEGER" />
-    <result column="hot" property="hot" jdbcType="TIMESTAMP" />
+    <result column="hot" property="hot" jdbcType="INTEGER" />
     <result column="hotTime" property="hottime" jdbcType="TIMESTAMP" />
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
@@ -118,7 +118,7 @@
     values (#{id,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{price,jdbcType=BIGINT}, #{images,jdbcType=VARCHAR}, #{stock,jdbcType=INTEGER}, 
       #{smalltypeid,jdbcType=INTEGER}, #{bigtypeid,jdbcType=INTEGER}, #{storeid,jdbcType=INTEGER}, 
-      #{hot,jdbcType=TIMESTAMP}, #{hottime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{hot,jdbcType=INTEGER}, #{hottime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, 
       #{updatetime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.lnsf.entity.Product" >
@@ -196,7 +196,7 @@
         #{storeid,jdbcType=INTEGER},
       </if>
       <if test="hot != null" >
-        #{hot,jdbcType=TIMESTAMP},
+        #{hot,jdbcType=INTEGER},
       </if>
       <if test="hottime != null" >
         #{hottime,jdbcType=TIMESTAMP},
@@ -249,7 +249,7 @@
         storeId = #{record.storeid,jdbcType=INTEGER},
       </if>
       <if test="record.hot != null" >
-        hot = #{record.hot,jdbcType=TIMESTAMP},
+        hot = #{record.hot,jdbcType=INTEGER},
       </if>
       <if test="record.hottime != null" >
         hotTime = #{record.hottime,jdbcType=TIMESTAMP},
@@ -279,7 +279,7 @@
       smallTypeId = #{record.smalltypeid,jdbcType=INTEGER},
       bigTypeId = #{record.bigtypeid,jdbcType=INTEGER},
       storeId = #{record.storeid,jdbcType=INTEGER},
-      hot = #{record.hot,jdbcType=TIMESTAMP},
+      hot = #{record.hot,jdbcType=INTEGER},
       hotTime = #{record.hottime,jdbcType=TIMESTAMP},
       createTime = #{record.createtime,jdbcType=TIMESTAMP},
       updateTime = #{record.updatetime,jdbcType=TIMESTAMP},
@@ -316,7 +316,7 @@
         storeId = #{storeid,jdbcType=INTEGER},
       </if>
       <if test="hot != null" >
-        hot = #{hot,jdbcType=TIMESTAMP},
+        hot = #{hot,jdbcType=INTEGER},
       </if>
       <if test="hottime != null" >
         hotTime = #{hottime,jdbcType=TIMESTAMP},
@@ -343,7 +343,7 @@
       smallTypeId = #{smalltypeid,jdbcType=INTEGER},
       bigTypeId = #{bigtypeid,jdbcType=INTEGER},
       storeId = #{storeid,jdbcType=INTEGER},
-      hot = #{hot,jdbcType=TIMESTAMP},
+      hot = #{hot,jdbcType=INTEGER},
       hotTime = #{hottime,jdbcType=TIMESTAMP},
       createTime = #{createtime,jdbcType=TIMESTAMP},
       updateTime = #{updatetime,jdbcType=TIMESTAMP},
