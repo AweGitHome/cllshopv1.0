@@ -13,8 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("user")
-public class UserController {
+@RequestMapping("admin")
+public class AdminController {
 
     private UserService userService;
 
@@ -37,14 +37,14 @@ public class UserController {
     }
 
     @RequestMapping("login")
-    String userlogin(User user, HttpSession session, HttpServletRequest request){
+    String login(User user, HttpSession session, HttpServletRequest request){
         User login = userService.login(user);
         if(login==null){
             session.setAttribute("userInfo",user);
             request.setAttribute("msg","用户名或密码错误");
             return "forward:/login.jsp";
         }
-        return "redirect:/index.jsp";
+        return "redirect:/admin/index.jsp";
     }
 
     @RequestMapping("check")

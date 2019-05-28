@@ -7,9 +7,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>书本列表</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/layui/css/layui.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/css/global.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/icheck/minimal/red.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/layui/css/layui.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/global.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/icheck/minimal/red.css">
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -127,10 +127,10 @@
   </div>
   
 </div>
-<script type="text/javascript" src="${pageContext.request.contextPath }/javascript/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/layui/layui.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/icheck/icheck.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/javascript/dw.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/admin/javascript/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/admin/layui/layui.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/admin/icheck/icheck.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/admin/javascript/dw.js"></script>
 <script type="text/javascript">
   	function _toPage(){
 		var toPage = document.getElementById("toPage").value;

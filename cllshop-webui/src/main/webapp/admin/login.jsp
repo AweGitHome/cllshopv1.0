@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <title>Layui登录界面</title>
-    <link type="text/css" href="${pageContext.request.contextPath}/layui/css/layui.css" rel="stylesheet" />
-    <link type="text/css" href="${pageContext.request.contextPath}/css/self/login-normal.css" rel="stylesheet"/>
+    <link type="text/css" href="${pageContext.request.contextPath}/admin/layui/css/layui.css" rel="stylesheet" />
+    <link type="text/css" href="${pageContext.request.contextPath}/admin/css/self/login-normal.css" rel="stylesheet"/>
 <body>
 <div id="self_header">
     跨境电商借卖平台后台系统

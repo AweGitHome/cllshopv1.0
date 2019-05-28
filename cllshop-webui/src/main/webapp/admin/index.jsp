@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>layout 后台大布局 - Layui</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/layui/css/layui.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/layui/css/layui.css">
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -90,8 +90,8 @@
   </div>
   
  </div>
-<script type="text/javascript" src="${pageContext.request.contextPath }/javascript/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/layui/layui.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/javascript/index.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/admin/javascript/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/admin/layui/layui.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/admin/javascript/index.js"></script>
 </body>
 </html>
