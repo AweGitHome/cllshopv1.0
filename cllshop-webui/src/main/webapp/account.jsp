@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: S1-02
-  Date: 2019/5/28
-  Time: 10:45
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -21,10 +15,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Fashion Mania Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script type="application/x-javascript">
+        function login(){
+            temp = $("#password").val();
+            var password= $.md5(temp);
+            console.log(password);
+            $("#password").val(password);
+            $("#loginForm").submit();
+        }
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
     <!-- start menu -->
     <link href="${pageContext.request.contextPath}/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
     <script type="text/javascript" src="js/memenu.js"></script>
+    <script src="${pageContext.request.contextPath}/js/md5.js"></script>
     <script>$(document).ready(function(){$(".memenu").memenu();});</script>
     <script src="${pageContext.request.contextPath}/js/simpleCart.min.js"> </script>
     <!-- slide -->
@@ -228,26 +232,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <h1>登录</h1>
         <div class="account_grid">
             <div class="col-md-6 login-right">
-                <form action="${pageContext.request.contextPath}/user/login" method="post">
+                <form action="${pageContext.request.contextPath}/user/login" method="post" id="loginForm">
                     <div class="form-group">
                         <label class="control-label">用户名</label>
-                        <input type="text" name="username" id="username" value=""
+                        <input type="text" name="username" id="username"
                                placeholder="Username"  onfocus=""
                                onblur="" class="form-control">
                         <span style="color: red" id="YHMerror"></span>
                     </div>
                     <div class="form-group">
                         <label class="control-label">密码</label>
-                        <input type="password" name="password" id="password" value=""
+                        <input type="password" name="password" id="password"
                                placeholder="Password"  class="form-control">
                         <span style="color: red; "></span>
                     </div>
                     <div class="form-group">
                         <input type="checkbox" id="remember" name="remember" value="off">记住用户名与密码
                     </div>
+                    <div id="errorTips" style="color:red;display:inline;">${msg}</div>
                     <br />
-                    <input type="submit" value="登录Login" class="kiosk-login-btn">
+                    <input type="button" value="登录Login" class="kiosk-login-btn" onclick="login()">
                     <a class="acount-btn" href="${pageContext.request.contextPath}/register.jsp">注册Register</a>
+
                 </form>
             </div>
             <div class="col-md-6 login-left">

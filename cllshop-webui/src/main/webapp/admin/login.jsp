@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Layui登录界面</title>
+    <title>后台系统登录界面</title>
     <link type="text/css" href="${pageContext.request.contextPath}/admin/layui/css/layui.css" rel="stylesheet" />
     <link type="text/css" href="${pageContext.request.contextPath}/admin/css/self/login-normal.css" rel="stylesheet"/>
 <body>

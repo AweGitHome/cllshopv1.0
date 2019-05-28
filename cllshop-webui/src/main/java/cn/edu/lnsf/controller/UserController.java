@@ -40,10 +40,10 @@ public class UserController {
     String userlogin(User user, HttpSession session, HttpServletRequest request){
         User login = userService.login(user);
         if(login==null){
-            session.setAttribute("userInfo",user);
             request.setAttribute("msg","用户名或密码错误");
-            return "forward:/login.jsp";
+            return "forward:/account.jsp";
         }
+        session.setAttribute("userInfo",user);
         return "redirect:/index.jsp";
     }
 

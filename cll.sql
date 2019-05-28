@@ -41,9 +41,11 @@ CREATE TABLE `bigtype` (
   `name` varchar(50) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=gb2312;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=gb2312;
 
 /*Data for the table `bigtype` */
+
+insert  into `bigtype`(`id`,`name`,`status`) values (1,'手机',1);
 
 /*Table structure for table `orders` */
 
@@ -95,7 +97,13 @@ CREATE TABLE `products` (
   `createTime` datetime NOT NULL,
   `updateTime` datetime NOT NULL,
   `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `FK_products_bigtype` (`bigTypeId`),
+  KEY `FK_products_smalltype` (`smallTypeId`),
+  KEY `FK_products` (`storeId`),
+  CONSTRAINT `FK_products` FOREIGN KEY (`storeId`) REFERENCES `stores` (`id`),
+  CONSTRAINT `FK_products_bigtype` FOREIGN KEY (`bigTypeId`) REFERENCES `bigtype` (`id`),
+  CONSTRAINT `FK_products_smalltype` FOREIGN KEY (`smallTypeId`) REFERENCES `smalltype` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=gb2312;
 
 /*Data for the table `products` */
@@ -112,9 +120,11 @@ CREATE TABLE `smalltype` (
   `bigType` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=gb2312;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=gb2312;
 
 /*Data for the table `smalltype` */
+
+insert  into `smalltype`(`id`,`name`,`bigType`,`status`) values (1,'华为',1,1);
 
 /*Table structure for table `stores` */
 
@@ -127,9 +137,11 @@ CREATE TABLE `stores` (
   `createTime` datetime NOT NULL,
   `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=gb2312;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=gb2312;
 
 /*Data for the table `stores` */
+
+insert  into `stores`(`id`,`name`,`userid`,`createTime`,`status`) values (1,'华为专卖店',1,'2018-09-06 00:00:00',1);
 
 /*Table structure for table `users` */
 
@@ -139,17 +151,17 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `birthday` datetime DEFAULT NULL,
   `username` varchar(255) NOT NULL,
-  `truename` varchar(20) NOT NULL,
+  `truename` varchar(20) DEFAULT NULL,
   `gender` int(11) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '1',
   `role` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=gb2312;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=gb2312;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`birthday`,`username`,`truename`,`gender`,`password`,`status`,`role`) values (1,NULL,'123','123',1,'123456',1,1),(2,NULL,'123','123',1,'b0b86dd3b8b88af4286f22e873afe306',1,1);
+insert  into `users`(`id`,`birthday`,`username`,`truename`,`gender`,`password`,`status`,`role`) values (1,NULL,'123','123',1,'e10adc3949ba59abbe56e057f20f883e',1,1),(2,NULL,'123','123',1,'b0b86dd3b8b88af4286f22e873afe306',1,1),(3,NULL,'1234',NULL,NULL,'202cb962ac59075b964b07152d234b70',1,1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

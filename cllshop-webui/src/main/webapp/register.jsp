@@ -22,6 +22,63 @@
     <meta name="keywords" content="Fashion Mania Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
     <script type="application/x-javascript">
+
+        $(document).ready(function () {
+            $("#username").blur(function () {
+                var username = $("#username").val();
+                $.ajax({
+                    url:"${pageContext.request.contextPath}/user/check",
+                    type:"post",
+                    dataType:"json",
+                    data:{username:username},
+                    async:true,
+                    success:function (result) {
+                        $("#errorUsername").html(result.msg);
+                    }
+                });
+            });
+
+            $("#submit").click(function () {
+                var username = $("#username").val();
+                var password = $("#password").val();
+                var cfmpass = $("#cfmpassword").val();
+                var user = {username:username,password:password};
+                if(username==''){
+                    $("#errorUsername").html("用户名不能为空");
+                }else if(password==''){
+                    $("#errorPass").html("密码不能为空");
+                }else if(cfmpass==''){
+                    $("#Regpasswordd").html('请确认密码');
+                }else{
+                    $.ajax({
+                        url:"${pageContext.request.contextPath}/user/register",
+                        data:user,
+                        dataType:"json",
+                        type:"post",
+                        async:true,
+                        success:function (result) {
+                            if(result.msg=='注册成功'){
+                                $("#regSuccess").html(result.msg);
+                            }else{
+                                $("#regFail").html(result.msg);
+                            }
+                        }
+                    });
+                }
+            });
+
+            $("#cfmpassword").blur(function(){
+                var password = $("#password").val();
+                var repass = $("#cfmpassword").val();
+                if(password!=repass){
+                    $("#Regpasswordd").html('两次密码不一致');
+                }else{
+                    $("#Regpasswordd").html('');
+                }
+            });
+
+        });
+
         addEventListener("load", function() {
             setTimeout(hideURLbar, 0);
         }, false);
@@ -29,6 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
+
     </script>
     <!-- start menu -->
     <link href="${pageContext.request.contextPath}/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
@@ -170,7 +228,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <li><a href="products.html">Pumps</a></li>
                                             <li><a href="products.html">Slippers</a></li>
                                             <li><a href="products.html">Flip-flops</a></li>
-
                                         </ul>
                                     </div>
                                 </div>
@@ -245,45 +302,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <fieldset>
                         <div class="form-group">
                             <label class="control-label" for="username"><span class="require">*</span>用户名</label>
-                            <input type="text" class="form-control" name="username" id="username" onfocus="Usernamefocu()" onblur="checkUsername()"
+                            <input type="text" class="form-control" name="username" id="username"
                                    placeholder="Username">
                             <div id="errorUsername" style="color:red;display:inline;"></div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="truename"><span class="require">*</span>真实姓名</label>
-                            <input type="text" class="form-control" name="truename" id="truename" onfocus="Nicknamefocu()" onblur="checkNickname()"
-                                   placeholder="Truename">
-                            <div  style="color:red;display:inline;"></div>
+                            <label class="control-label" for="password"><span class="require">*</span>密码</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                            <div id="errorPass" style="color:red;display:inline;"></div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="birthday"><span class="require">*</span>生日</label>
-                            <input type="text" class="form-control" name="birthday" id="birthday" onfocus="Nicknamefocu()" onblur="checkNickname()"
-                                   placeholder="Birthday">
-                            <div  style="color:red;display:inline;"></div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="gender"><span class="require">*</span>性别</label>
-                            <input type="text" class="form-control" name="gender" id="gender" onfocus="Nicknamefocu()" onblur="checkNickname()"
-                                   placeholder="Gender">
-                            <div  style="color:red;display:inline;"></div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="regpassword"><span class="require">*</span>密码</label>
-                            <input type="password" class="form-control" name="regpassword" id="regpassword" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="regpassword1"><span class="require">*</span>确认密码</label>
-                            <input type="password" class="form-control" name="regpassword1" id="regpassword1" onblur="checkpassword()"
+                            <label class="control-label" for="cfmpassword"><span class="require">*</span>确认密码</label>
+                            <input type="password" class="form-control" id="cfmpassword"
                                    placeholder="Confirm password">
                             <div id="Regpasswordd" style="color:red;display:inline;"></div>
                         </div>
-                        <div><span style="color:red;display:inline;"></span>
-                            <span style="color:green;display:inline;"></span>
+                        <div><span style="color:red;display:inline;" id="regFail"></span>
+                            <span style="color:green;display:inline;" id="regSuccess"></span>
                         </div>
                     </fieldset>
                     <br />
                     <div class="buttons kiosk-input-area">
-                        <input type="submit" value="注册Register" id="submit" class="kiosk-button-field">
+                        <input type="button" value="注册Register" id="submit" class="kiosk-button-field">
                         <a class="acount-btn" href="account.jsp">登录Login</a>
                     </div>
                 </form>
