@@ -1,3 +1,6 @@
+import cn.edu.lnsf.dao.ProductMapper;
+import cn.edu.lnsf.dao.UserMapper;
+import cn.edu.lnsf.entity.Product;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +17,13 @@ import java.util.List;
 public class UserDaoTest {
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    ProductMapper productMapper;
 
     @Test
     public void test1(){
         //ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
-        List<User> users = userMapper.selectByExample(new UserExample());
-        System.out.println(users);
+        List<Product> list = productMapper.selAll();
+        System.out.println(list);
     }
 }

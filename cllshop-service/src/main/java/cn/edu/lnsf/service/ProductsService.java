@@ -12,4 +12,5 @@ public interface ProductsService {
     int updateProduct(Product product);
     int delProduct(int productId);
     PageBean getPageData(int curPage);
+    public boolean batchDel(List<Integer> ids);
 }

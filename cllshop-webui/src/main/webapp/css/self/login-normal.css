@@ -1,0 +1,40 @@
+	body{
+		padding: 0 0;
+		background: url(../../img/login.jpg);
+		background-size:cover;
+		background-repeat: no-repeat;
+	}
+	#self_header{
+		margin-top:10%;
+		text-align: center;
+		font-family: "courier new";
+		font-size: 30px;
+	}
+	#self_loginItem{
+		margin-left: 35%;
+		margin-top: 2%;
+		width: 400px;
+		height:270px;
+		text-align: center;
+		background-color: rgba(0,0,0,0.2);
+		position: relative;
+		display: block;
+		z-index: 900;
+	}
+	 .self-form-label{
+		text-align: center;
+		font-size: 20px;
+		font-style: inherit;
+		color: white;
+	}
+	#self_loginItem .layui-form-item{
+		margin-top: 20px;
+		margin-left: 75px;
+	}
+	#submitItem{
+		margin-top: 20px;
+		width:250px;
+		height:30px;
+		margin-left: 75px;
+	} 
+	

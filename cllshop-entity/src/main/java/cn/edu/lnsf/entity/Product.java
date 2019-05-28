@@ -31,6 +31,37 @@ public class Product {
 
     private Integer status;
 
+    private SmallType smallType;
+
+    private BigType bigType;
+
+    private Store store;
+
+    public SmallType getSmallType() {
+        return smallType;
+    }
+
+    public void setSmallType(SmallType smallType) {
+        this.smallType = smallType;
+    }
+
+    public BigType getBigType() {
+        return bigType;
+    }
+
+    public void setBigType(BigType bigType) {
+        this.bigType = bigType;
+    }
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
+
     public Integer getId() {
         return id;
     }
