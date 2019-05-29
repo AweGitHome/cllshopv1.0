@@ -41,7 +41,7 @@ public class UserController {
         User login = userService.login(user);
         if(login==null){
             request.setAttribute("msg","用户名或密码错误");
-            return "forward:/account.jsp";
+            return "forward:/login.jsp";
         }
         session.setAttribute("userInfo",user);
         return "redirect:/index.jsp";
@@ -57,5 +57,6 @@ public class UserController {
             map.put("msg","可注册的用户");
         }
         return map;
+
     }
 }
