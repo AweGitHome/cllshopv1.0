@@ -49,6 +49,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     $("#errorPass").html("密码不能为空");
                 }else if(cfmpass==''){
                     $("#Regpasswordd").html('请确认密码');
+                }else if($("#errorUsername").html()!='可注册的用户'){
+                    alert('请输入可注册的用户');
                 }else{
                     $.ajax({
                         url:"${pageContext.request.contextPath}/user/register",
