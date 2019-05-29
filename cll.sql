@@ -100,10 +100,7 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`),
   KEY `FK_products_bigtype` (`bigTypeId`),
   KEY `FK_products_smalltype` (`smallTypeId`),
-  KEY `FK_products` (`storeId`),
-  CONSTRAINT `FK_products` FOREIGN KEY (`storeId`) REFERENCES `stores` (`id`),
-  CONSTRAINT `FK_products_bigtype` FOREIGN KEY (`bigTypeId`) REFERENCES `bigtype` (`id`),
-  CONSTRAINT `FK_products_smalltype` FOREIGN KEY (`smallTypeId`) REFERENCES `smalltype` (`id`)
+  KEY `FK_products` (`storeId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=gb2312;
 
 /*Data for the table `products` */
