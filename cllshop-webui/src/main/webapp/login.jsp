@@ -10,11 +10,16 @@
     <title>登录</title>
     <script type="application/x-javascript">
         function login(){
+            var username = $("#username").val();
             temp = $("#password").val();
+            if (username != "" && temp != ""){
             var password= $.md5(temp);
             console.log(password);
             $("#password").val(password);
             $("#loginForm").submit();
+            }else{
+                alert("用户名或密码不能为空！");
+            }
         }
         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
     </script>

@@ -6,12 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,12 +19,12 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- start menu -->
-<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="js/memenu.js"></script>
+<link href="${pageContext.request.contextPath}/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
-<script src="js/simpleCart.min.js"> </script>
+<script src="${pageContext.request.contextPath}/js/simpleCart.min.js"> </script>
 <!-- slide -->
-<script src="js/responsiveslides.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/responsiveslides.min.js"></script>
 <script>
     $(function () {
         $("#slider").responsiveSlides({
@@ -44,7 +44,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-sm-4 world">
             </div>
             <div class="col-sm-4 logo">
-                <a href="index.html"><img src="images/logo.png" alt=""></a>
+                <a href="index.html"><img src="${pageContext.request.contextPath}/images/logo.png" alt=""></a>
             </div>
 
             <div class="col-sm-4 header-left">
@@ -54,7 +54,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <a href="checkout.html">
                         <h3> <div class="total">
                             <span class="simpleCart_total"></span></div>
-                            <img src="images/cart.png" alt=""/></h3>
+                            <img src="${pageContext.request.contextPath}/images/cart.png" alt=""/></h3>
                     </a>
                     <p><a href="javascript:;" class="simpleCart_empty">空</a></p>
 
@@ -96,9 +96,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="clearfix"> </div>
             <!---pop-up-box---->
-            <script type="text/javascript" src="js/modernizr.custom.min.js"></script>
-            <link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
-            <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+            <script type="text/javascript" src="${pageContext.request.contextPath}/js/modernizr.custom.min.js"></script>
+            <link href="${pageContext.request.contextPath}/css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
+            <script src="${pageContext.request.contextPath}/js/jquery.magnific-popup.js" type="text/javascript"></script>
             <!---//pop-up-box---->
             <div id="small-dialog" class="mfp-hide">
                 <div class="search-top">
