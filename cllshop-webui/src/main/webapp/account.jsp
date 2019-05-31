@@ -299,7 +299,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><a href="#">Ornared id aliquet</a></li>
                     <li><a href="#">Ultrices id du</a></li>
                     <li><a href="#">Commodo sit</a></li>
-
                 </ul>
             </div>
             <div class="col-sm-3 footer-bottom-cate cate-bottom">

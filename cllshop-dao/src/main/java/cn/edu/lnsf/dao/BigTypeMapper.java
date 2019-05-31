@@ -28,4 +28,6 @@ public interface BigTypeMapper {
     int updateByPrimaryKeySelective(BigType record);
 
     int updateByPrimaryKey(BigType record);
+
+    BigType selAllSmallTypeById(@Param("id")Integer id);
 }

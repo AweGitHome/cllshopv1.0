@@ -1,6 +1,7 @@
 package cn.edu.lnsf.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Store {
     private Integer id;
@@ -12,6 +13,16 @@ public class Store {
     private Date createtime;
 
     private Integer status;
+
+    private List<Product> products;
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
 
     public Integer getId() {
         return id;

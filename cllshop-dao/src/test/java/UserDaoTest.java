@@ -1,3 +1,4 @@
+import cn.edu.lnsf.dao.BigTypeMapper;
 import cn.edu.lnsf.dao.ProductMapper;
 import cn.edu.lnsf.dao.UserMapper;
 import cn.edu.lnsf.entity.Product;
@@ -19,11 +20,16 @@ public class UserDaoTest {
     UserMapper userMapper;
     @Autowired
     ProductMapper productMapper;
+    @Autowired
+    BigTypeMapper bigTypeMapper;
 
     @Test
     public void test1(){
         //ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
-        List<Product> list = productMapper.selAll();
+        //BigType bigType = bigTypeMapper.selAllSmallTypeById(1);
+//        List<Product> list = productMapper.selAll();
+//        productMapper.selAll();
+        List<Product> list = productMapper.selAllByStoreId(2);
         System.out.println(list);
     }
 }
