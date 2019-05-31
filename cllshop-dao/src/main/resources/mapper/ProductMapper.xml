@@ -33,42 +33,18 @@
         <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
         <result column="status" property="status" jdbcType="INTEGER" />
         <association property="bigType" javaType="cn.edu.lnsf.entity.BigType">
-            <id property="id" column="bid"/>
-            <result column="bname" property="name" />
+            <id property="id" column="id"/>
+            <result column="name" property="name" />
         </association>
         <association property="smallType" javaType="cn.edu.lnsf.entity.SmallType">
-            <id property="id" column="sid"/>
-            <result column="sname" property="name" />
+            <id property="id" column="id"/>
+            <result column="name" property="name" />
         </association>
         <association property="store" javaType="cn.edu.lnsf.entity.Store">
-            <id property="id" column="stid"/>
-            <result column="stname" property="name" />
+            <id property="id" column="id"/>
+            <result column="name" property="name" />
         </association>
     </resultMap>
-    <resultMap id="resultByStoreId" type="cn.edu.lnsf.entity.Product" >
-        <id column="id" property="id" jdbcType="INTEGER" />
-        <result column="description" property="description" jdbcType="VARCHAR" />
-        <result column="name" property="name" jdbcType="VARCHAR" />
-        <result column="price" property="price" jdbcType="BIGINT" />
-        <result column="images" property="images" jdbcType="VARCHAR" />
-        <result column="stock" property="stock" jdbcType="INTEGER" />
-        <result column="smallTypeId" property="smalltypeid" jdbcType="INTEGER" />
-        <result column="bigTypeId" property="bigtypeid" jdbcType="INTEGER" />
-        <result column="storeId" property="storeid" jdbcType="INTEGER" />
-        <result column="hot" property="hot" jdbcType="INTEGER" />
-        <result column="hotTime" property="hottime" jdbcType="TIMESTAMP" />
-        <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
-        <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
-        <result column="status" property="status" jdbcType="INTEGER" />
-        <association property="bigType" javaType="cn.edu.lnsf.entity.BigType">
-            <id property="id" column="bid"/>
-            <result column="bname" property="name" />
-        </association>
-        <association property="smallType" javaType="cn.edu.lnsf.entity.SmallType">
-            <id property="id" column="sid"/>
-            <result column="sname" property="name" />
-        </association>
-      </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -403,21 +379,11 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selAll" resultMap="myResultMap" >
-    select products.*,smalltype.id sid,smalltype.name sname,bigtype.id bid,bigtype.name bname,
-    stores.id stid, stores.name stname from products,smalltype,bigtype,stores
+    select products.*,smalltype.*,bigtype.*,stores.* from products,smalltype,bigtype,stores
     <where>
       and products.smallTypeId=smalltype.id
       and products.storeId=stores.id
       and products.bigTypeId=bigtype.id
-    </where>
-  </select>
-  <select id="selAllByStoreId" resultMap="resultByStoreId" >
-    select products.*,smalltype.id sid,smalltype.name sname,bigtype.id bid,bigtype.name bname
-     from products,smalltype,bigtype
-    <where>
-      and products.smallTypeId=smalltype.id
-      and products.bigTypeId=bigtype.id
-      and products.storeId=#{id}
     </where>
   </select>
 

@@ -6,16 +6,6 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
-  <resultMap id="myResultMap" type="cn.edu.lnsf.entity.BigType" >
-    <id column="bid" property="id" jdbcType="INTEGER" />
-    <result column="bname" property="name" jdbcType="VARCHAR" />
-    <result column="bstatus" property="status" jdbcType="INTEGER" />
-    <collection property="smallTypes" ofType="cn.edu.lnsf.entity.SmallType">
-      <id column="sid" property="id" />
-      <result property="name" column="sname" />
-      <result property="status" column="sstatus"/>
-    </collection>
-  </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -188,11 +178,4 @@
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-
-  <select id="selAllSmallTypeById" resultMap="myResultMap" parameterType="java.lang.Integer">
-    select smalltype.id sid,smalltype.name sname,smalltype.status sstatus,
-    bigtype.id bid,bigtype.name bname,bigtype.status bstatus from smalltype
-    left join bigtype
-    on bigtype.id=#{id}
-  </select>
 </mapper>
