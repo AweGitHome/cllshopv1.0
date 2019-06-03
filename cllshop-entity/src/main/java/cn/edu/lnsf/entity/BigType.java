@@ -1,11 +1,15 @@
 package cn.edu.lnsf.entity;
 
+import java.util.List;
+
 public class BigType {
     private Integer id;
 
     private String name;
 
     private Integer status;
+
+    private List<SmallType> smallTypes;
 
     public Integer getId() {
         return id;

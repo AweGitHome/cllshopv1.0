@@ -81,7 +81,7 @@
         <h1>注册</h1>
         <div class="account_grid">
             <div class="col-md-6 login-right">
-                <form class="form-horizontal" action="registerServlet" method="post">
+                <form class="form-horizontal" method="post">
                     <fieldset>
                         <div class="form-group">
                             <label class="control-label" for="username"><span class="require">*</span>用户名</label>

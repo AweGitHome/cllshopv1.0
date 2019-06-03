@@ -43,6 +43,7 @@ public class UserController {
             request.setAttribute("msg","用户名或密码错误");
             return "forward:/login.jsp";
         }
+
         session.setAttribute("userInfo",user);
         return "redirect:/index.jsp";
     }
