@@ -18,14 +18,7 @@
                     data:{username:username},
                     async:true,
                     success:function (result) {
-                        if(result.msg != '可注册的用户'){
-                            $("#rightUsername").html("");
-                            $("#errorUsername").html(result.msg);
-                        }else{
-                            $("#errorUsername").html("");
-                            $("#rightUsername").html(result.msg);
-                        }
-
+                        $("#errorUsername").html(result.msg);
                     }
                 });
             });
@@ -40,7 +33,7 @@
                     $("#errorPass").html("密码不能为空");
                 }else if(cfmpass==''){
                     $("#Regpasswordd").html('请确认密码');
-                }else if($("#rightUsername").html()!= '可注册的用户'){
+                }else if($("#rightUsername").html()!='可注册的用户'){
                     alert('请输入可注册的用户');
                 }else{
                     $.ajax({
@@ -88,7 +81,7 @@
         <h1>注册</h1>
         <div class="account_grid">
             <div class="col-md-6 login-right">
-                <form class="form-horizontal"  method="post">
+                <form class="form-horizontal" action="registerServlet" method="post">
                     <fieldset>
                         <div class="form-group">
                             <label class="control-label" for="username"><span class="require">*</span>用户名</label>
