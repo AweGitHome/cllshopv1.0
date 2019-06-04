@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <jsp:include page="commonheader.jsp"></jsp:include>
+<title>首页</title>
 <!--banner-->
 <div class="banner">
     <div class="col-sm-3 banner-mat">

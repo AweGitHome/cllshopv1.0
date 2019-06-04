@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="commonheader.jsp"></jsp:include>
+<title>注册</title>
     <script type="application/x-javascript">
         $(document).ready(function () {
             $("#username").change(function () {
@@ -36,6 +37,7 @@
                 var cfmpass = $("#cfmpassword").val();
                 var user = {username:username,password:password,email:email};
                 if(username==''){
+                    $("#rightUsername").html("");
                     $("#errorUsername").html("用户名不能为空");
                 }else if(password==''){
                     $("#errorPass").html("密码不能为空");
@@ -91,12 +93,14 @@
                             if(result.msg=="发送成功"){
                                 $("#errorTips").html("");
                                 $("#successTips").html(result.msg);
+
                             }else{
                                 $("#successTips").html("");
                                 $("#errorTips").html(result.msg);
                             }
                         }
                     });
+                    resetCode();
                 }
             });
             $("#code").change(function () {
@@ -138,6 +142,23 @@
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
+        function resetCode(){
+            $('#getCodeBtn').hide();
+            $('#getTime').html('30');
+            $('#getTimeCode').show();
+            var second = 30;
+            var timer = null;
+            timer = setInterval(function(){
+                second -= 1;
+                if(second >0 ){
+                    $('#getTime').html(second);
+                }else{
+                    clearInterval(timer);
+                    $('#getCodeBtn').show();
+                    $('#getTimeCode').hide();
+                }
+            },1000);
+        }
     </script>
     <script>
         $(document).ready(function() {
@@ -152,35 +173,41 @@
                 <form class="form-horizontal"  method="post">
                     <fieldset>
                         <div class="form-group">
-                            <label class="control-label" for="username"><span class="require">*</span>用户名</label>
-                            <input type="text" class="form-control" name="username" id="username"
+                            <label class="control-label" for="username">用户名</label><br/>
+                            <input type="text"  style="width: 65%;display: inline" class="form-control" name="username" id="username"
                                    placeholder="Username">
-                            <div id="rightUsername" style="color:green;display:inline;"></div>
-                            <div id="errorUsername" style="color:red;display:inline;"></div>
+                            <span id="rightUsername" style="color:green;display:inline;"></span>
+                            <span id="errorUsername" style="color:red;display:inline;"></span>
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="email"><span class="require">*</span>邮箱</label>
-                            <input type="text" class="form-control" name="email" id="email" placeholder="Email">
-                            <input type="button" id="getCodeBtn" class="btn-info" value="获取验证码" />
-                            <span class="text-danger" id="errorTips"></span>
-                            <span class="text-success" id="successTips"></span>
-                            <div id="codeLine" style="display: inline">
-                                <label class="control-label" for="code"><span class="require">*</span>验证码</label>
-                                <input type="text" class="form-inline" id="code">
-                                <div id="errorMail" style="color:red;display:inline;"></div>
-                                <div id="trueMail" style="color:green;display:inline;"></div>
-                            </div>
+                            <label class="control-label" for="password">密码</label><br/>
+                            <input type="password" style="width: 65%;display: inline" class="form-control" name="password" id="password" placeholder="Password">
+                            <span id="errorPass" style="color:red;display:inline;"></span>
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="password"><span class="require">*</span>密码</label>
-                            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-                            <div id="errorPass" style="color:red;display:inline;"></div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="cfmpassword"><span class="require">*</span>确认密码</label>
-                            <input type="password" class="form-control" id="cfmpassword"
+                            <label class="control-label" for="cfmpassword">确认密码</label><br/>
+                            <input type="password" style="width: 65%;display: inline" class="form-control" id="cfmpassword"
                                    placeholder="Confirm password">
-                            <div id="Regpasswordd" style="color:red;display:inline;"></div>
+                            <span id="Regpasswordd" style="color:red;display:inline;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="email">邮箱</label><br/>
+                            <input style="width: 65%;display: inline" type="text" class="form-control" name="email" id="email" placeholder="Email">
+                            <%--<input type="button" id="getCodeBtn" class="btn-info" value="获取验证码" />--%>
+                            <span id="errorTips" style="color:red;display:inline;"></span>
+                            <span id="successTips" style="color:green;display:inline;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="code">验证码</label><br/>
+                            <input type="text" style="width: 65%;display: inline" class="form-control" name="code" id="code" placeholder="Code">
+                            <div>
+                            <span id="getTimeCode" style="display:none;">
+                                没收到验证码？<span id="getTime"  style="display: inline;color: cadetblue;font-size: 20px">30</span>秒后重发
+                            </span>
+                            </div>
+                            <input type="button" id="getCodeBtn" class="acount-btn" style="display: inline" value="获取验证码" />
+                            <span id="errorMail" style="color:red;display:inline;"></span>
+                            <span id="trueMail" style="color:green;display:inline;"></span>
                         </div>
                         <div><span style="color:red;display:inline;" id="regFail"></span>
                             <span style="color:green;display:inline;" id="regSuccess"></span>

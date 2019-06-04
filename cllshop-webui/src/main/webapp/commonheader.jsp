@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
@@ -97,8 +98,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                 </div>
                     </li>
-                    <li class="grid"><a  href="#">商家入驻</a></li>
-                    <li><a class="color6" href="contact.html">商铺展示</a></li>
+                    <li class="grid"><a  href="${pageContext.request.contextPath}/storeregister.jsp">商家入驻</a></li>
+                    <li><a class="color6" href="${pageContext.request.contextPath}/store.jsp">商铺展示</a></li>
                 </ul>
             </div>
             <div class="col-sm-2 search">
