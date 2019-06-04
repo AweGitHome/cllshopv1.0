@@ -2,7 +2,6 @@ package cn.edu.lnsf.service.impl;
 
 import cn.edu.lnsf.dao.BigTypeMapper;
 import cn.edu.lnsf.entity.BigType;
-import cn.edu.lnsf.entity.BigTypeExample;
 import cn.edu.lnsf.service.BigTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,7 @@ public class BigTypeServiceImpl implements BigTypeService {
     BigTypeMapper bigTypeMapper;
 
     public List<BigType> findAll() {
-        return bigTypeMapper.selectByExample(new BigTypeExample());
+        return bigTypeMapper.selAllTypes();
     }
 
     public int addBigType(BigType bigType) {

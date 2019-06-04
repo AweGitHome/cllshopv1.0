@@ -6,6 +6,15 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
+  <resultMap id="myResultMap" type="cn.edu.lnsf.entity.BigType">
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <collection property="smallTypes" ofType="cn.edu.lnsf.entity.SmallType">
+      <id property="id" column="sid"/>
+      <result property="name" column="sname"/>
+    </collection>
+  </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -178,4 +187,10 @@
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selAllTypes" resultMap="myResultMap">
+    select bigtype.*, smalltype.id sid,smalltype.name sname
+    from smalltype
+    left join bigtype
+    on smalltype.bigtype=bigtype.id
+  </select>
 </mapper>

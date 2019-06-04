@@ -614,6 +614,206 @@ public class UserExample {
             addCriterion("role not between", value1, value2, "role");
             return (Criteria) this;
         }
+
+        public Criteria andInfocompleteIsNull() {
+            addCriterion("infoComplete is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfocompleteIsNotNull() {
+            addCriterion("infoComplete is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfocompleteEqualTo(Integer value) {
+            addCriterion("infoComplete =", value, "infocomplete");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfocompleteNotEqualTo(Integer value) {
+            addCriterion("infoComplete <>", value, "infocomplete");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfocompleteGreaterThan(Integer value) {
+            addCriterion("infoComplete >", value, "infocomplete");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfocompleteGreaterThanOrEqualTo(Integer value) {
+            addCriterion("infoComplete >=", value, "infocomplete");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfocompleteLessThan(Integer value) {
+            addCriterion("infoComplete <", value, "infocomplete");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfocompleteLessThanOrEqualTo(Integer value) {
+            addCriterion("infoComplete <=", value, "infocomplete");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfocompleteIn(List<Integer> values) {
+            addCriterion("infoComplete in", values, "infocomplete");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfocompleteNotIn(List<Integer> values) {
+            addCriterion("infoComplete not in", values, "infocomplete");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfocompleteBetween(Integer value1, Integer value2) {
+            addCriterion("infoComplete between", value1, value2, "infocomplete");
+            return (Criteria) this;
+        }
+
+        public Criteria andInfocompleteNotBetween(Integer value1, Integer value2) {
+            addCriterion("infoComplete not between", value1, value2, "infocomplete");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailIsNull() {
+            addCriterion("email is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailIsNotNull() {
+            addCriterion("email is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailEqualTo(String value) {
+            addCriterion("email =", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotEqualTo(String value) {
+            addCriterion("email <>", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailGreaterThan(String value) {
+            addCriterion("email >", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailGreaterThanOrEqualTo(String value) {
+            addCriterion("email >=", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLessThan(String value) {
+            addCriterion("email <", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLessThanOrEqualTo(String value) {
+            addCriterion("email <=", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLike(String value) {
+            addCriterion("email like", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotLike(String value) {
+            addCriterion("email not like", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailIn(List<String> values) {
+            addCriterion("email in", values, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotIn(List<String> values) {
+            addCriterion("email not in", values, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailBetween(String value1, String value2) {
+            addCriterion("email between", value1, value2, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotBetween(String value1, String value2) {
+            addCriterion("email not between", value1, value2, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserpicIsNull() {
+            addCriterion("userpic is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserpicIsNotNull() {
+            addCriterion("userpic is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserpicEqualTo(String value) {
+            addCriterion("userpic =", value, "userpic");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserpicNotEqualTo(String value) {
+            addCriterion("userpic <>", value, "userpic");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserpicGreaterThan(String value) {
+            addCriterion("userpic >", value, "userpic");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserpicGreaterThanOrEqualTo(String value) {
+            addCriterion("userpic >=", value, "userpic");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserpicLessThan(String value) {
+            addCriterion("userpic <", value, "userpic");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserpicLessThanOrEqualTo(String value) {
+            addCriterion("userpic <=", value, "userpic");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserpicLike(String value) {
+            addCriterion("userpic like", value, "userpic");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserpicNotLike(String value) {
+            addCriterion("userpic not like", value, "userpic");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserpicIn(List<String> values) {
+            addCriterion("userpic in", values, "userpic");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserpicNotIn(List<String> values) {
+            addCriterion("userpic not in", values, "userpic");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserpicBetween(String value1, String value2) {
+            addCriterion("userpic between", value1, value2, "userpic");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserpicNotBetween(String value1, String value2) {
+            addCriterion("userpic not between", value1, value2, "userpic");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

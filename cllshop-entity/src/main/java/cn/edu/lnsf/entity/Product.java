@@ -37,6 +37,14 @@ public class Product {
 
     private Store store;
 
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
     public SmallType getSmallType() {
         return smallType;
     }
@@ -53,13 +61,6 @@ public class Product {
         this.bigType = bigType;
     }
 
-    public Store getStore() {
-        return store;
-    }
-
-    public void setStore(Store store) {
-        this.store = store;
-    }
 
 
     public Integer getId() {

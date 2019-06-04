@@ -21,7 +21,7 @@ public class ProductServiceImpl implements ProductsService {
     ProductMapper productMapper;
 
     public List<Product> getAllProducts() {
-        return productMapper.selAll();
+        return productMapper.selAllByStoreId(1);
     }
 
     public List<Product> getProductsByCondition(Product product) {

@@ -1,7 +1,6 @@
 package cn.edu.lnsf.entity;
 
 import java.util.Date;
-import java.util.List;
 
 public class Store {
     private Integer id;
@@ -14,15 +13,7 @@ public class Store {
 
     private Integer status;
 
-    private List<Product> products;
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
+    private String info;
 
     public Integer getId() {
         return id;
@@ -62,5 +53,13 @@ public class Store {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info == null ? null : info.trim();
     }
 }

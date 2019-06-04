@@ -41,11 +41,11 @@ CREATE TABLE `bigtype` (
   `name` varchar(50) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=gb2312;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=gb2312;
 
 /*Data for the table `bigtype` */
 
-insert  into `bigtype`(`id`,`name`,`status`) values (1,'手机',1);
+insert  into `bigtype`(`id`,`name`,`status`) values (1,'数码设备',1),(2,'服装服饰',1);
 
 /*Table structure for table `orders` */
 
@@ -117,11 +117,11 @@ CREATE TABLE `smalltype` (
   `bigType` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=gb2312;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=gb2312;
 
 /*Data for the table `smalltype` */
 
-insert  into `smalltype`(`id`,`name`,`bigType`,`status`) values (1,'华为',1,1);
+insert  into `smalltype`(`id`,`name`,`bigType`,`status`) values (1,'手机',1,1),(2,'电脑',1,1),(3,'单反',1,1),(4,'男装',2,1),(5,'女装',2,1);
 
 /*Table structure for table `stores` */
 
@@ -132,13 +132,14 @@ CREATE TABLE `stores` (
   `name` varchar(255) NOT NULL,
   `userid` int(11) NOT NULL,
   `createTime` datetime NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '1',
+  `status` int(11) NOT NULL DEFAULT '0' COMMENT '状态：0删除1正常',
+  `info` varchar(255) DEFAULT NULL COMMENT '申请入驻信息',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=gb2312;
 
 /*Data for the table `stores` */
 
-insert  into `stores`(`id`,`name`,`userid`,`createTime`,`status`) values (1,'华为专卖店',1,'2018-09-06 00:00:00',1);
+insert  into `stores`(`id`,`name`,`userid`,`createTime`,`status`,`info`) values (1,'华为专卖店',1,'2018-09-06 00:00:00',0,NULL);
 
 /*Table structure for table `users` */
 
@@ -146,19 +147,22 @@ DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `birthday` datetime DEFAULT NULL,
-  `username` varchar(255) NOT NULL,
-  `truename` varchar(20) DEFAULT NULL,
-  `gender` int(11) DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '1',
-  `role` int(11) NOT NULL DEFAULT '1',
+  `birthday` datetime DEFAULT NULL COMMENT '生日',
+  `username` varchar(255) NOT NULL COMMENT '用户名',
+  `truename` varchar(20) DEFAULT NULL COMMENT '真实姓名',
+  `gender` int(11) DEFAULT NULL COMMENT '性别',
+  `password` varchar(255) NOT NULL COMMENT '密码',
+  `status` int(11) NOT NULL DEFAULT '1' COMMENT '状态：0删除1正常',
+  `role` int(11) NOT NULL DEFAULT '1' COMMENT '角色：0管理员1普通用户2商家',
+  `infoComplete` int(11) DEFAULT '0' COMMENT '0：未完善信息，1：已完善信息',
+  `email` varchar(255) DEFAULT NULL COMMENT '邮箱',
+  `userpic` varchar(255) DEFAULT NULL COMMENT '头像',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=gb2312;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=gb2312;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`birthday`,`username`,`truename`,`gender`,`password`,`status`,`role`) values (1,NULL,'123','123',1,'e10adc3949ba59abbe56e057f20f883e',1,1),(2,NULL,'123','123',1,'b0b86dd3b8b88af4286f22e873afe306',1,1),(3,NULL,'1234',NULL,NULL,'202cb962ac59075b964b07152d234b70',1,1);
+insert  into `users`(`id`,`birthday`,`username`,`truename`,`gender`,`password`,`status`,`role`,`infoComplete`,`email`,`userpic`) values (1,NULL,'123','123',1,'e10adc3949ba59abbe56e057f20f883e',1,1,0,'',NULL),(2,NULL,'123','123',1,'b0b86dd3b8b88af4286f22e873afe306',1,1,0,'',NULL),(3,NULL,'1234',NULL,NULL,'202cb962ac59075b964b07152d234b70',1,1,0,'',NULL),(6,NULL,'gakki',NULL,NULL,'e10adc3949ba59abbe56e057f20f883e',1,1,0,'',NULL),(7,NULL,'12345',NULL,NULL,'202cb962ac59075b964b07152d234b70',1,1,0,'',NULL),(8,NULL,'123456',NULL,NULL,'979d472a84804b9f647bc185a877a8b5',1,1,0,NULL,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

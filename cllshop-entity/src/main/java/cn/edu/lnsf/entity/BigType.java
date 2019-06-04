@@ -11,6 +11,14 @@ public class BigType {
 
     private List<SmallType> smallTypes;
 
+    public List<SmallType> getSmallTypes() {
+        return smallTypes;
+    }
+
+    public void setSmallTypes(List<SmallType> smallTypes) {
+        this.smallTypes = smallTypes;
+    }
+
     public Integer getId() {
         return id;
     }

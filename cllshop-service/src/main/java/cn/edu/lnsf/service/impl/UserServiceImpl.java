@@ -58,4 +58,13 @@ public class UserServiceImpl implements UserService {
     public int editUser(User user) {
         return userMapper.updateByPrimaryKeySelective(user);
     }
+
+    public boolean checkEmailIsUsed(User user) {
+        UserExample example = new UserExample();
+        example.createCriteria().andEmailEqualTo(user.getEmail());
+        if(userMapper.selectByExample(example).size()!=0){
+            return true;
+        }
+        return false;
+    }
 }

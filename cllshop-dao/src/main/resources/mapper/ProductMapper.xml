@@ -374,14 +374,6 @@
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selAll" resultMap="myResultMap" >
-    select products.*,smalltype.*,bigtype.*,stores.* from products,smalltype,bigtype,stores
-    <where>
-      and products.smallTypeId=smalltype.id
-      and products.storeId=stores.id
-      and products.bigTypeId=bigtype.id
-    </where>
-  </select>
   <select id="selAllByStoreId" resultMap="resultByStoreId">
     select products.*,smalltype.id sid, smalltype.name sname,bigtype.id bid,bigtype.name bname
     from products,smalltype,bigtype

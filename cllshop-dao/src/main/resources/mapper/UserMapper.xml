@@ -10,6 +10,9 @@
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="role" property="role" jdbcType="INTEGER" />
+    <result column="infoComplete" property="infocomplete" jdbcType="INTEGER" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="userpic" property="userpic" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, birthday, username, truename, gender, password, status, role
+    id, birthday, username, truename, gender, password, status, role, infoComplete, email, 
+    userpic
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.edu.lnsf.entity.UserExample" >
     select
@@ -105,10 +109,12 @@
   <insert id="insert" parameterType="cn.edu.lnsf.entity.User" >
     insert into users (id, birthday, username, 
       truename, gender, password, 
-      status, role)
+      status, role, infoComplete, 
+      email, userpic)
     values (#{id,jdbcType=INTEGER}, #{birthday,jdbcType=TIMESTAMP}, #{username,jdbcType=VARCHAR}, 
       #{truename,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{role,jdbcType=INTEGER})
+      #{status,jdbcType=INTEGER}, #{role,jdbcType=INTEGER}, #{infocomplete,jdbcType=INTEGER}, 
+      #{email,jdbcType=VARCHAR}, #{userpic,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.lnsf.entity.User" >
     insert into users
@@ -137,6 +143,15 @@
       <if test="role != null" >
         role,
       </if>
+      <if test="infocomplete != null" >
+        infoComplete,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="userpic != null" >
+        userpic,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -162,6 +177,15 @@
       </if>
       <if test="role != null" >
         #{role,jdbcType=INTEGER},
+      </if>
+      <if test="infocomplete != null" >
+        #{infocomplete,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="userpic != null" >
+        #{userpic,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -198,6 +222,15 @@
       <if test="record.role != null" >
         role = #{record.role,jdbcType=INTEGER},
       </if>
+      <if test="record.infocomplete != null" >
+        infoComplete = #{record.infocomplete,jdbcType=INTEGER},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userpic != null" >
+        userpic = #{record.userpic,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -212,7 +245,10 @@
       gender = #{record.gender,jdbcType=INTEGER},
       password = #{record.password,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
-      role = #{record.role,jdbcType=INTEGER}
+      role = #{record.role,jdbcType=INTEGER},
+      infoComplete = #{record.infocomplete,jdbcType=INTEGER},
+      email = #{record.email,jdbcType=VARCHAR},
+      userpic = #{record.userpic,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -241,6 +277,15 @@
       <if test="role != null" >
         role = #{role,jdbcType=INTEGER},
       </if>
+      <if test="infocomplete != null" >
+        infoComplete = #{infocomplete,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="userpic != null" >
+        userpic = #{userpic,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -252,7 +297,10 @@
       gender = #{gender,jdbcType=INTEGER},
       password = #{password,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
-      role = #{role,jdbcType=INTEGER}
+      role = #{role,jdbcType=INTEGER},
+      infoComplete = #{infocomplete,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      userpic = #{userpic,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

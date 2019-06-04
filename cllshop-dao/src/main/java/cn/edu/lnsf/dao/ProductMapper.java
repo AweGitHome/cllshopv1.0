@@ -29,7 +29,5 @@ public interface ProductMapper {
 
     int updateByPrimaryKey(Product record);
 
-    List<Product> selAll();
-
     List<Product> selAllByStoreId(@Param("id") Integer storeId);
 }

@@ -19,6 +19,12 @@ public class User {
 
     private Integer role;
 
+    private Integer infocomplete;
+
+    private String email;
+
+    private String userpic;
+
     public Integer getId() {
         return id;
     }
@@ -81,5 +87,29 @@ public class User {
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    public Integer getInfocomplete() {
+        return infocomplete;
+    }
+
+    public void setInfocomplete(Integer infocomplete) {
+        this.infocomplete = infocomplete;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public String getUserpic() {
+        return userpic;
+    }
+
+    public void setUserpic(String userpic) {
+        this.userpic = userpic == null ? null : userpic.trim();
     }
 }

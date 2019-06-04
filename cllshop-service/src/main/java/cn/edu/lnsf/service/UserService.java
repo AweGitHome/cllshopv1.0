@@ -39,4 +39,6 @@ public interface UserService {
      */
     int editUser(User user);
 
+    boolean checkEmailIsUsed(User user);
+
 }

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
@@ -48,8 +49,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
 
             <div class="col-sm-4 header-left">
-                <p class="log"><a href="${pageContext.request.contextPath}/login.jsp">登录</a>
-                    <span>or</span><a  href="${pageContext.request.contextPath}/register.jsp">注册</a></p>
+                <c:choose>
+                    <c:when test="${userInfo!=null}">
+                        <p class="log">欢迎你的到来，${userInfo.username}</p>
+                    </c:when>
+                    <c:otherwise>
+                        <p class="log"><a href="${pageContext.request.contextPath}/login.jsp">登录</a>
+                            <span>or</span><a  href="${pageContext.request.contextPath}/register.jsp">注册</a></p>
+                    </c:otherwise>
+                </c:choose>
                 <div class="cart box_1">
                     <a href="checkout.html">
                         <h3> <div class="total">
@@ -57,7 +65,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <img src="${pageContext.request.contextPath}/images/cart.png" alt=""/></h3>
                     </a>
                     <p><a href="javascript:;" class="simpleCart_empty">空</a></p>
-
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -72,19 +79,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-sm-8 h_menu4">
                 <ul class="memenu skyblue">
                     <li class=" grid"><a  href="${pageContext.request.contextPath}/index.jsp">首页</a></li>
-                    <li><a  href="#">商品分类</a>
-                        <div class="mepanel">
-                            <div class="row">
-                                <div class="col1">
-                                    <div class="h_nav">
-                                        <h4>All Clothing</h4>
-                                        <ul>
-                                            <li><a href="products.html">Shirts</a></li>
-                                        </ul>
+                        <li><a  href="#">商品分类</a>
+                                <div class="mepanel">
+                                    <div class="row">
+                                        <c:forEach items="${bigTypes}" var="bigType">
+                                        <div class="col1">
+                                            <div class="h_nav">
+                                                <h4>${bigType.name}</h4>
+                                                <ul>
+                                                    <c:forEach items="${bigType.smallTypes}" var="smallType">
+                                                        <li><a href="${pageContext.request.contextPath}/detail?id=${smallType.id}">${smallType.name}</a></li>
+                                                    </c:forEach>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        </c:forEach>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
                     </li>
                     <li class="grid"><a  href="#">商家入驻</a></li>
                     <li><a class="color6" href="contact.html">商铺展示</a></li>

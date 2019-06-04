@@ -1,6 +1,7 @@
+import cn.edu.lnsf.dao.BigTypeMapper;
 import cn.edu.lnsf.dao.ProductMapper;
 import cn.edu.lnsf.dao.UserMapper;
-import cn.edu.lnsf.entity.Product;
+import cn.edu.lnsf.entity.BigType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,14 @@ public class UserDaoTest {
     UserMapper userMapper;
     @Autowired
     ProductMapper productMapper;
+    @Autowired
+    BigTypeMapper bigTypeMapper;
 
     @Test
     public void test1(){
         //ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
-        List<Product> list = productMapper.selAll();
+        //List<Product> list = productMapper.selAll();
+        List<BigType> list = bigTypeMapper.selAllTypes();
         System.out.println(list);
     }
 }
