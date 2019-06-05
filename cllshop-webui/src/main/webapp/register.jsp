@@ -10,6 +10,7 @@
 <title>注册</title>
     <script type="application/x-javascript">
         $(document).ready(function () {
+
             $("#username").change(function () {
                 var username = $("#username").val();
                 $.ajax({
@@ -20,11 +21,11 @@
                     async:true,
                     success:function (result) {
                         if(result.msg != '可注册的用户'){
-                            $("#rightUsername").html("");
+                            // $("#rightUsername").html("");
                             $("#errorUsername").html(result.msg);
                         }else{
                             $("#errorUsername").html("");
-                            $("#rightUsername").html(result.msg);
+                            // $("#rightUsername").html(result.msg);
                         }
 
                     }
@@ -43,11 +44,11 @@
                     $("#errorPass").html("密码不能为空");
                 }else if(cfmpass==''){
                     $("#Regpasswordd").html('请确认密码');
-                }else if($("#rightUsername").html()!= '可注册的用户'){
+                }else if($("#errorUsername").html()!= ''){
                     alert('请输入可注册的用户');
-                }else if($("#trueMail").html()!= '验证成功'){
+                }else if($("#errorMail").html()!= ''){
                     alert('请输入正确的验证码');
-                }else if($("#errorTips").html()== '请输入正确的邮箱格式'){
+                }else if($("#errorTips").html()!= ''){
                     alert('请输入正确的邮箱格式');
                 }else{
                     $.ajax({
@@ -79,9 +80,9 @@
             $("#getCodeBtn").click(function () {
                 var email = $("#email").val();
                 var data = {"email":email};
-                var tips = $("#successTips").html();
-                if(tips==""){
-                    alert("请输入正确的邮箱格式");
+                var tips = $("#errorTips").html();
+                if(tips.indexOf("失败")==-1&&tips!=""){
+                    alert("请检查邮箱格式或者该邮箱是否已被注册");
                 }else{
                     $.ajax({
                         url:"${pageContext.request.contextPath}/user/checkEmail",
@@ -92,15 +93,18 @@
                         success:function (result) {
                             if(result.msg=="发送成功"){
                                 $("#errorTips").html("");
-                                $("#successTips").html(result.msg);
-
+                                // $("#successTips").html(result.msg);
+                                resetCode();
+                            }else if(result.msg=='发送失败'){
+                                // $("#successTips").html("");
+                                $("#errorTips").html(result.msg);
+                                resetCode();
                             }else{
-                                $("#successTips").html("");
+                                // $("#successTips").html("");
                                 $("#errorTips").html(result.msg);
                             }
                         }
                     });
-                    resetCode();
                 }
             });
             $("#code").change(function () {
@@ -115,9 +119,9 @@
                     success:function (result) {
                         if(result.msg=="验证成功"){
                             $("#errorMail").html("");
-                            $("#trueMail").html(result.msg);
+                            // $("#trueMail").html(result.msg);
                         }else{
-                            $("#trueMail").html("");
+                            // $("#trueMail").html("");
                             $("#errorMail").html(result.msg);
                         }
                     }
@@ -128,10 +132,10 @@
                 var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
                 if(!myreg.test(email)){
                     $("#errorTips").html("请输入正确的邮箱格式");
-                    $("#successTips").html("");
+                    //$("#successTips").html("");
                 }else{
                     $("#errorTips").html("");
-                    $("#successTips").html("格式正确");
+                    //$("#successTips").html("格式正确");
                 }
             });
         });
@@ -176,7 +180,7 @@
                             <label class="control-label" for="username">用户名</label><br/>
                             <input type="text"  style="width: 65%;display: inline" class="form-control" name="username" id="username"
                                    placeholder="Username">
-                            <span id="rightUsername" style="color:green;display:inline;"></span>
+                            <%--<span id="rightUsername" style="color:green;display:inline;"></span>--%>
                             <span id="errorUsername" style="color:red;display:inline;"></span>
                         </div>
                         <div class="form-group">
@@ -195,19 +199,19 @@
                             <input style="width: 65%;display: inline" type="text" class="form-control" name="email" id="email" placeholder="Email">
                             <%--<input type="button" id="getCodeBtn" class="btn-info" value="获取验证码" />--%>
                             <span id="errorTips" style="color:red;display:inline;"></span>
-                            <span id="successTips" style="color:green;display:inline;"></span>
+                            <%--<span id="successTips" style="color:green;display:inline;"></span>--%>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="code">验证码</label><br/>
                             <input type="text" style="width: 65%;display: inline" class="form-control" name="code" id="code" placeholder="Code">
+                            <span id="errorMail" style="color:red;display:inline;"></span>
+                            <%--<span id="trueMail" style="color:green;display:inline;"></span>--%>
                             <div>
                             <span id="getTimeCode" style="display:none;">
                                 没收到验证码？<span id="getTime"  style="display: inline;color: cadetblue;font-size: 20px">30</span>秒后重发
                             </span>
                             </div>
                             <input type="button" id="getCodeBtn" class="acount-btn" style="display: inline" value="获取验证码" />
-                            <span id="errorMail" style="color:red;display:inline;"></span>
-                            <span id="trueMail" style="color:green;display:inline;"></span>
                         </div>
                         <div><span style="color:red;display:inline;" id="regFail"></span>
                             <span style="color:green;display:inline;" id="regSuccess"></span>

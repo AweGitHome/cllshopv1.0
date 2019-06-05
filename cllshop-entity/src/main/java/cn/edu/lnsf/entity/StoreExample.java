@@ -484,6 +484,76 @@ public class StoreExample {
             addCriterion("info not between", value1, value2, "info");
             return (Criteria) this;
         }
+
+        public Criteria andStorepicIsNull() {
+            addCriterion("storepic is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStorepicIsNotNull() {
+            addCriterion("storepic is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStorepicEqualTo(String value) {
+            addCriterion("storepic =", value, "storepic");
+            return (Criteria) this;
+        }
+
+        public Criteria andStorepicNotEqualTo(String value) {
+            addCriterion("storepic <>", value, "storepic");
+            return (Criteria) this;
+        }
+
+        public Criteria andStorepicGreaterThan(String value) {
+            addCriterion("storepic >", value, "storepic");
+            return (Criteria) this;
+        }
+
+        public Criteria andStorepicGreaterThanOrEqualTo(String value) {
+            addCriterion("storepic >=", value, "storepic");
+            return (Criteria) this;
+        }
+
+        public Criteria andStorepicLessThan(String value) {
+            addCriterion("storepic <", value, "storepic");
+            return (Criteria) this;
+        }
+
+        public Criteria andStorepicLessThanOrEqualTo(String value) {
+            addCriterion("storepic <=", value, "storepic");
+            return (Criteria) this;
+        }
+
+        public Criteria andStorepicLike(String value) {
+            addCriterion("storepic like", value, "storepic");
+            return (Criteria) this;
+        }
+
+        public Criteria andStorepicNotLike(String value) {
+            addCriterion("storepic not like", value, "storepic");
+            return (Criteria) this;
+        }
+
+        public Criteria andStorepicIn(List<String> values) {
+            addCriterion("storepic in", values, "storepic");
+            return (Criteria) this;
+        }
+
+        public Criteria andStorepicNotIn(List<String> values) {
+            addCriterion("storepic not in", values, "storepic");
+            return (Criteria) this;
+        }
+
+        public Criteria andStorepicBetween(String value1, String value2) {
+            addCriterion("storepic between", value1, value2, "storepic");
+            return (Criteria) this;
+        }
+
+        public Criteria andStorepicNotBetween(String value1, String value2) {
+            addCriterion("storepic not between", value1, value2, "storepic");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

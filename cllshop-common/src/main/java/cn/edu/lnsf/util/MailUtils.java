@@ -19,14 +19,14 @@ public class MailUtils {
         try {
             String code = CodeUtils.getCode();
             String content = "您的验证码为<span style='color:red;'>"+code+"</span>,请于30分钟内完成注册，感谢您的配合";
-            sendMail("2715979423@qq.com",content);
+            sendMail("1343685578@qq.com",content);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void sendMail(String mail,String content) throws Exception{
-        // 1. 创建一封邮件
+    public static void sendMail(String mail,String content) throws Exception{        // 1. 创建一封邮件
+
         Properties props = new Properties();                // 用于连接邮件服务器的参数配置（发送邮件时才需要用到）
         props.setProperty("mail.transport.protocol", "smtp");   // 使用的协议（JavaMail规范要求）
         props.setProperty("mail.smtp.host", MY_SMTP_HOST);   // 发件人的邮箱的 SMTP 服务器地址
@@ -56,7 +56,7 @@ public class MailUtils {
 
         // 3. To: 收件人（可以增加多个收件人、抄送、密送）
         message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(receiveMail, "XX用户", "UTF-8"));
-
+        message.setRecipient(MimeMessage.RecipientType.CC, new InternetAddress(SEND_MAIL_ADDRESS));
         // 4. Subject: 邮件主题
         message.setSubject("欢迎注册", "UTF-8");
 

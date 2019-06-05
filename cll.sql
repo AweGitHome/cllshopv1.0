@@ -134,12 +134,13 @@ CREATE TABLE `stores` (
   `createTime` datetime NOT NULL,
   `status` int(11) NOT NULL DEFAULT '0' COMMENT '状态：0删除1正常',
   `info` varchar(255) DEFAULT NULL COMMENT '申请入驻信息',
+  `storepic` varchar(255) DEFAULT NULL COMMENT '商家头像',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=gb2312;
 
 /*Data for the table `stores` */
 
-insert  into `stores`(`id`,`name`,`userid`,`createTime`,`status`,`info`) values (1,'华为专卖店',1,'2018-09-06 00:00:00',0,NULL);
+insert  into `stores`(`id`,`name`,`userid`,`createTime`,`status`,`info`,`storepic`) values (1,'华为专卖店',1,'2018-09-06 00:00:00',0,NULL,NULL);
 
 /*Table structure for table `users` */
 
@@ -158,7 +159,7 @@ CREATE TABLE `users` (
   `email` varchar(255) DEFAULT NULL COMMENT '邮箱',
   `userpic` varchar(255) DEFAULT NULL COMMENT '头像',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=gb2312;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=gb2312;
 
 /*Data for the table `users` */
 

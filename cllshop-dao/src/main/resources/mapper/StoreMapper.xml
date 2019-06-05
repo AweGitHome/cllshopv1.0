@@ -8,6 +8,7 @@
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="info" property="info" jdbcType="VARCHAR" />
+    <result column="storepic" property="storepic" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, userid, createTime, status, info
+    id, name, userid, createTime, status, info, storepic
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.edu.lnsf.entity.StoreExample" >
     select
@@ -102,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.lnsf.entity.Store" >
     insert into stores (id, name, userid, 
-      createTime, status, info
-      )
+      createTime, status, info, 
+      storepic)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, 
-      #{createtime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{info,jdbcType=VARCHAR}
-      )
+      #{createtime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{info,jdbcType=VARCHAR}, 
+      #{storepic,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.lnsf.entity.Store" >
     insert into stores
@@ -129,6 +130,9 @@
       <if test="info != null" >
         info,
       </if>
+      <if test="storepic != null" >
+        storepic,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -148,6 +152,9 @@
       </if>
       <if test="info != null" >
         #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="storepic != null" >
+        #{storepic,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -178,6 +185,9 @@
       <if test="record.info != null" >
         info = #{record.info,jdbcType=VARCHAR},
       </if>
+      <if test="record.storepic != null" >
+        storepic = #{record.storepic,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -190,7 +200,8 @@
       userid = #{record.userid,jdbcType=INTEGER},
       createTime = #{record.createtime,jdbcType=TIMESTAMP},
       status = #{record.status,jdbcType=INTEGER},
-      info = #{record.info,jdbcType=VARCHAR}
+      info = #{record.info,jdbcType=VARCHAR},
+      storepic = #{record.storepic,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,6 +224,9 @@
       <if test="info != null" >
         info = #{info,jdbcType=VARCHAR},
       </if>
+      <if test="storepic != null" >
+        storepic = #{storepic,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -222,8 +236,8 @@
       userid = #{userid,jdbcType=INTEGER},
       createTime = #{createtime,jdbcType=TIMESTAMP},
       status = #{status,jdbcType=INTEGER},
-      info = #{info,jdbcType=VARCHAR}
+      info = #{info,jdbcType=VARCHAR},
+      storepic = #{storepic,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-
 </mapper>

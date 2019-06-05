@@ -15,6 +15,8 @@ public class Store {
 
     private String info;
 
+    private String storepic;
+
     public Integer getId() {
         return id;
     }
@@ -61,5 +63,13 @@ public class Store {
 
     public void setInfo(String info) {
         this.info = info == null ? null : info.trim();
+    }
+
+    public String getStorepic() {
+        return storepic;
+    }
+
+    public void setStorepic(String storepic) {
+        this.storepic = storepic == null ? null : storepic.trim();
     }
 }
