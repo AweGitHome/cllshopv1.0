@@ -381,6 +381,7 @@
       and products.smallTypeId=smalltype.id
       and products.bigTypeId=bigtype.id
       and products.storeId=#{id}
+      and products.status=1
     </where>
   </select>
 

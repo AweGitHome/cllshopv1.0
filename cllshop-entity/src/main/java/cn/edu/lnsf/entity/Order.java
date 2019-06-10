@@ -1,8 +1,9 @@
 package cn.edu.lnsf.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Order {
+public class Order implements Serializable {
     private Integer id;
 
     private Long cost;

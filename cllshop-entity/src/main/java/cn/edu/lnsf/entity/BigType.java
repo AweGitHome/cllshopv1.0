@@ -1,8 +1,11 @@
 package cn.edu.lnsf.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class BigType {
+
+public class BigType implements Serializable {
+
     private Integer id;
 
     private String name;

@@ -52,3 +52,15 @@ function show_page6(){
 	document.getElementById('page4').style.display="none";
 	document.getElementById('page5').style.display="none";
 }
+
+/**shop**/
+function sa_show_page1(){
+	/**默认页**/
+	document.getElementById('page1').style.display="block";
+	document.getElementById('page2').style.display="none";
+}
+function sa_show_page2(){
+	/**商品**/
+	document.getElementById('page2').style.display="block";
+	document.getElementById('page1').style.display="none";
+}

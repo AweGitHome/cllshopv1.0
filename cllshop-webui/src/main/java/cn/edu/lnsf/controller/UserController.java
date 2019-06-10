@@ -1,6 +1,5 @@
 package cn.edu.lnsf.controller;
 
-import cn.edu.lnsf.entity.BigType;
 import cn.edu.lnsf.entity.User;
 import cn.edu.lnsf.service.BigTypeService;
 import cn.edu.lnsf.service.UserService;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -55,9 +53,9 @@ public class UserController {
             request.setAttribute("msg","用户名或密码错误");
             return "forward:/login.jsp";
         }
-        List<BigType> bigTypes = bigTypeService.findAll();
+        //List<BigType> bigTypes = bigTypeService.findAll();
         session.setAttribute("userInfo",user);
-        session.setAttribute("bigTypes",bigTypes);
+        //session.setAttribute("bigTypes",bigTypes);
         return "redirect:/index.jsp";
     }
 
@@ -107,6 +105,5 @@ public class UserController {
         }
         return map;
     }
-
 
 }

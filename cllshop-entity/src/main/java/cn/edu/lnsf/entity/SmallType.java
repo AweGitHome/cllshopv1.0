@@ -1,6 +1,8 @@
 package cn.edu.lnsf.entity;
 
-public class SmallType {
+import java.io.Serializable;
+
+public class SmallType implements Serializable {
     private Integer id;
 
     private String name;
