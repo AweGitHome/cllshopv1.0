@@ -29,6 +29,20 @@ public class ProductServiceImpl implements ProductsService {
         return null;
     }
 
+    public List<Product> getProductById(int productId){
+        ProductExample example = new ProductExample();
+        example.createCriteria().andIdEqualTo(productId);
+        List<Product> products = productMapper.selectByExample(example);
+        return products;
+    }
+
+    public List<Product> getProductBySTId(int smallTypeId){
+        ProductExample example = new ProductExample();
+        example.createCriteria().andSmalltypeidEqualTo(smallTypeId);
+        List<Product> products = productMapper.selectByExample(example);
+        return products;
+    }
+
     public int addProduct(Product product) {
         product.setStoreid(1);
         product.setCreatetime(new Date());
@@ -78,5 +92,12 @@ public class ProductServiceImpl implements ProductsService {
             return true;
         }
         return false;
+    }
+
+    public List<Product> getHotProduct() {
+        ProductExample example = new ProductExample();
+        example.createCriteria().andHotEqualTo(1);
+        List<Product> hotList = productMapper.selectByExample(example);
+        return hotList;
     }
 }

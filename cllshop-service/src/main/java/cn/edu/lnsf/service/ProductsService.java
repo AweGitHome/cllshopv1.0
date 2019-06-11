@@ -12,5 +12,8 @@ public interface ProductsService {
     int updateProduct(Product product);
     int delProduct(int productId);
     PageBean getPageData(int curPage);
-    public boolean batchDel(List<Integer> ids);
+    boolean batchDel(List<Integer> ids);
+    List<Product> getHotProduct();
+    List<Product> getProductById(int productId);
+    List<Product> getProductBySTId(int smallTypeId);
 }

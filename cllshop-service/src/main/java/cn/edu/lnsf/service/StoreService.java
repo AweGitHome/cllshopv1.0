@@ -26,4 +26,9 @@ public interface StoreService {
      */
     List<Store> getAllStore();
     PageBean getPageData(int curPage);
+    List<Store> getAudStore();
+    PageBean getAudPageData(int curPage);
+    int passStoreRegi(Store store);
+    List<Store> getRegStore();
+
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +38,21 @@ public class ProductController {
         request.setAttribute("pageInfo",pageInfo);
         return "forward:/admin/productList.jsp";
     }
+
+    @RequestMapping("showPro")
+    public String showProduct(int productId,HttpServletRequest request){
+        List<Product> product = productsService.getProductById(productId);
+        request.setAttribute("product",product);
+        return "forward:/single.jsp";
+    }
+
+    @RequestMapping("showProByType")
+    public String showProductByType(int smallTypeId,HttpServletRequest request){
+        List<Product> products = productsService.getProductBySTId(smallTypeId);
+        request.setAttribute("products",products);
+        return "forward:/productList.jsp";
+    }
+
 
     @RequestMapping("uploadPic")
     @ResponseBody
@@ -101,4 +117,5 @@ public class ProductController {
         }
         return map;
     }
+
 }

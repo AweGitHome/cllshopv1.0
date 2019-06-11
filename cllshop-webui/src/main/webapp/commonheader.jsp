@@ -89,7 +89,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <h4>${bigType.name}</h4>
                                                 <ul>
                                                     <c:forEach items="${bigType.smallTypes}" var="smallType">
-                                                        <li><a href="${pageContext.request.contextPath}/detail?id=${smallType.id}">${smallType.name}</a></li>
+                                                        <li><a href="${pageContext.request.contextPath}/product/showProByType?smallTypeId=${smallType.id}">${smallType.name}</a></li>
                                                     </c:forEach>
                                                 </ul>
                                             </div>
@@ -99,7 +99,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                     </li>
                     <li class="grid"><a  href="${pageContext.request.contextPath}/storeregister.jsp">商家入驻</a></li>
-                    <li><a class="color6" href="${pageContext.request.contextPath}/store.jsp">商铺展示</a></li>
+                    <li><a class="color6" href="${pageContext.request.contextPath}/store/showStore">商铺展示</a></li>
                 </ul>
             </div>
             <div class="col-sm-2 search">

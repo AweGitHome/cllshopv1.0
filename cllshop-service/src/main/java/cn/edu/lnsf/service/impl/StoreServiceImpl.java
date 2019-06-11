@@ -58,6 +58,13 @@ public class StoreServiceImpl implements StoreService {
         return stores;
     }
 
+    public List<Store> getAudStore() {
+        StoreExample example = new StoreExample();
+        example.createCriteria().andStatusEqualTo(0);
+        List<Store> audstores = storeMapper.selectByExample(example);
+        return audstores;
+    }
+
     public PageBean getPageData(int curPage) {
         PageBean pageBean = new PageBean();
         PageHelper.startPage(curPage,pageBean.getPageSize());
@@ -69,5 +76,33 @@ public class StoreServiceImpl implements StoreService {
         pageBean.setTotalCount((int)total);
         pageBean.setCurPage(curPage);
         return pageBean;
+    }
+
+    public PageBean getAudPageData(int curPage){
+        PageBean pageBean = new PageBean();
+        PageHelper.startPage(curPage,pageBean.getPageSize());
+        List<Store> list = getAudStore();
+        //取分页信息
+        PageInfo<Store> pageInfo = new PageInfo<Store>(list);
+        long total = pageInfo.getTotal();
+        pageBean.setData(list);
+        pageBean.setTotalCount((int)total);
+        pageBean.setCurPage(curPage);
+        return pageBean;
+    }
+
+    public int passStoreRegi(Store store) {
+        store.setStatus(1);
+        if(storeMapper.updateByPrimaryKeySelective(store)!=0){
+            return 1;
+        }
+        return 0;
+    }
+
+    public List<Store> getRegStore() {
+        StoreExample example = new StoreExample();
+        example.createCriteria().andStatusEqualTo(1);
+        List<Store> stores = storeMapper.selectByExample(example);
+        return stores;
     }
 }

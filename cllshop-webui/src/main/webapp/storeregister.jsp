@@ -32,7 +32,8 @@
         });
         $("#submit").click(function () {
             var name = $("#name").val();
-            var store = {name: name};
+            var info = $("#info").val();
+            var store = {name: name,info:info};
             if (name == '') {
                 $("#rightStorename").html("");
                 $("#errorStorename").html("店铺名不能为空");
@@ -79,11 +80,17 @@
                 <form class="form-horizontal" method="post">
                     <fieldset>
                         <div class="form-group">
-                            <label class="control-label" for="name"><span class="require">*</span>店铺名称</label>
+                            <label class="control-label" for="name">店铺名称</label>
                             <input type="text" class="form-control" name="name" id="name"
                                    placeholder="Storename">
                             <div id="rightStorename" style="color:green;display:inline;"></div>
                             <div id="errorStorename" style="color:red;display:inline;"></div>
+                            <div>
+                            <label class="control-label" for="info"></label>
+                            </div>
+                            <label class="control-label" for="info">店铺详情</label>
+                            <input type="text" class="form-control" name="info" id="info"
+                                   placeholder="Information">
                         </div>
                     </fieldset>
                     <br/>

@@ -70,6 +70,7 @@
                             <label class="layui-form-label">类别</label>
                             <div class="layui-input-inline">
                                 <select id="btype" name="bigtypeid" lay-filter="btype">
+                                    <option value="">请选择类别</option>
                                     <c:forEach items="${bigTypes}" var="bigtype">
                                         <option value="${bigtype.id}">${bigtype.name}</option>
                                     </c:forEach>
@@ -77,6 +78,7 @@
                             </div>
                             <div class="layui-input-inline">
                                 <select name="smalltypeid" id="stype" class="field">
+                                    <option value="1">请选择类别</option>
                                 </select>
                             </div>
                         </div>
@@ -130,7 +132,6 @@
         form.on('select(btype)', function(data){
             var url = "/stype/getAll";
             var bid = data.value;
-            alert(bid);
             $.ajax({
                 url:url,
                 data:{bid:bid},
