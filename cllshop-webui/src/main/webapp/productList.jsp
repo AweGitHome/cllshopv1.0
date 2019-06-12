@@ -14,12 +14,12 @@
 <div class="content">
     <div class="container">
         <div class="content-top">
-            <h1>商品</h1>
+            <h1>${smalltype.name}</h1>
             <div class="content-top1">
                 <c:forEach items="${products }" var="pro">
-                    <div class="col-md-3 col-md2"】>
-                        <div class="col-md1 simpleCart_shelfItem">
-                            <a href="single.html">
+                    <div class="col-md-3 col-md2" >
+                        <div class="col-md1 simpleCart_shelfItem" >
+                            <a href="${pageContext.request.contextPath }/product/showPro/?productId=${pro.id}">
                                 <img class="img-responsive" src="${pro.images}" alt="" />
                             </a>
                             <h3><a href="single.html">${pro.name}</a></h3>

@@ -17,8 +17,8 @@
             <h1>入驻商家</h1>
             <div class="content-top1">
                 <c:forEach items="${stores }" var="store">
-                    <div class="col-md-3 col-md2"】>
-                        <div class="col-md1 simpleCart_shelfItem">
+                    <div class="col-md-3 col-md2" >
+                        <div class="col-md1 simpleCart_shelfItem"style="width: 200px">
                             <a href="single.html">
                                 <img class="img-responsive" src="${store.storepic}" alt="" />
                             </a>

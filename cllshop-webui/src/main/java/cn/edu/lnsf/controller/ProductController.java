@@ -2,7 +2,9 @@ package cn.edu.lnsf.controller;
 
 import cn.edu.lnsf.entity.PageBean;
 import cn.edu.lnsf.entity.Product;
+import cn.edu.lnsf.entity.SmallType;
 import cn.edu.lnsf.service.ProductsService;
+import cn.edu.lnsf.service.SmallTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,10 +24,15 @@ import java.util.UUID;
 @RequestMapping("product")
 public class ProductController {
     private ProductsService productsService;
+    private SmallTypeService smallTypeService;
 
     @Autowired
     public void setProductsService(ProductsService productsService) {
         this.productsService = productsService;
+    }
+    @Autowired
+    public void setSmallTypeService(SmallTypeService smallTypeService) {
+        this.smallTypeService = smallTypeService;
     }
 
     @RequestMapping("showProList")
@@ -49,6 +56,8 @@ public class ProductController {
     @RequestMapping("showProByType")
     public String showProductByType(int smallTypeId,HttpServletRequest request){
         List<Product> products = productsService.getProductBySTId(smallTypeId);
+        SmallType smalltype = smallTypeService.findByid(smallTypeId);
+        request.setAttribute("smalltype",smalltype);
         request.setAttribute("products",products);
         return "forward:/productList.jsp";
     }

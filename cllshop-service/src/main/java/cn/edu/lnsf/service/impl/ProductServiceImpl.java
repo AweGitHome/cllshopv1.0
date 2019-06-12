@@ -96,7 +96,7 @@ public class ProductServiceImpl implements ProductsService {
 
     public List<Product> getHotProduct() {
         ProductExample example = new ProductExample();
-        example.createCriteria().andHotEqualTo(1);
+        example.createCriteria().andHotEqualTo(1).andStatusEqualTo(1);
         List<Product> hotList = productMapper.selectByExample(example);
         return hotList;
     }

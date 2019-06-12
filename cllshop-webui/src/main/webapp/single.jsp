@@ -80,16 +80,18 @@
             <!--seller-->
             <div class="product-bottom">
                 <h3 class="cate">热门商品</h3>
+                <c:forEach items="${hotList}" var="hot" begin="0" end="3">
                 <div class="product-go">
                     <div class=" fashion-grid">
-                        <a href="single.html"><img class="img-responsive " src="images/pr.jpg" alt=""></a>
+                        <a href="${pageContext.request.contextPath }/product/showPro/?productId=${hot.id}"><img class="img-responsive " src="${hot.images}" alt=""></a>
                     </div>
                     <div class=" fashion-grid1">
-                        <h6 class="best2"><a href="single.html" >${hot.name}</a></h6>
+                        <h6 class="best2"><a href="${pageContext.request.contextPath }/product/showPro/?productId=${hot.id}" >${hot.name}</a></h6>
                         <span class=" price-in1">￥${hot.price/100}</span>
                     </div>
                     <div class="clearfix"> </div>
                 </div>
+                </c:forEach>
             </div>
 
             <!--//seller-->

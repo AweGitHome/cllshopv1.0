@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="C" uri="http://www.springframework.org/tags/form" %>
 <jsp:include page="commonheader.jsp"></jsp:include>
 <title>首页</title>
 <!--banner-->
@@ -45,7 +46,7 @@
             <div class="content-top1">
                 <c:forEach var="hot" items="${hotList}">
                 <div class="col-md-3 col-md2">
-                    <div class="col-md1 simpleCart_shelfItem">
+                    <div class="col-md1 simpleCart_shelfItem" style="width: 250px;height: 250px">
                         <a href="${pageContext.request.contextPath }/product/showPro/?productId=${hot.id}">
                             <img class="img-responsive" width="50%" src="${hot.images}" alt="" />
                         </a>

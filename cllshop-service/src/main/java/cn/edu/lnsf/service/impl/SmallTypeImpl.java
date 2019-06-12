@@ -22,4 +22,9 @@ public class SmallTypeImpl implements SmallTypeService {
         example.createCriteria().andBigtypeEqualTo(bid);
         return smallTypeMapper.selectByExample(example);
     }
+
+    public SmallType findByid(int smallId) {
+        smallTypeMapper.selectByPrimaryKey(smallId);
+        return smallTypeMapper.selectByPrimaryKey(smallId);
+    }
 }
