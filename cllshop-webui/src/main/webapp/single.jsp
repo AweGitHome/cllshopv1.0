@@ -12,19 +12,11 @@
 <jsp:include page="commonheader.jsp"></jsp:include>
 <script type="application/x-javascript">
     $(document).ready(function () {
-        $("#addcard").click(function () {
-            var proid = $("#proId").html();
-            alert(proid);
-            $.ajax({
-                url:"${pageContext.request.contextPath}/shopcar/getids",
-                type:"post",
-                dataType:"json",
-                data:{id:proid},
-                async:true,
-                success:function (result) {
-
-                }
-            });
+        $("#addcart").click(function () {
+            var id = $("#proId").val();
+            var name = "id"+id;
+            alert(name+","+id);
+            $.cookie(name,id,{path:"/"});
         });
     });
 </script>
@@ -44,7 +36,7 @@
                 <div class="single-para simpleCart_shelfItem">
                     <h1>${pro.name}</h1>
                     <p>${pro.description}</p>
-                    <div class="text-info" id="proId">${pro.id}</div>
+                    <input type="hidden" value="${pro.id}" id="proId">
                     <div class="star-on">
                         <ul>
                             <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
@@ -62,7 +54,7 @@
                     <div class="available">
                         <h6>库存：${pro.stock}</h6>
                     </div>
-                    <a href="#" class="cart item_add">加入购物车</a>
+                    <a href="#" id="addcart" class="cart item_add">加入购物车</a>
                 </div>
             </div>
             <div class="clearfix"> </div>

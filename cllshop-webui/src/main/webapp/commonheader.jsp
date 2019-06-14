@@ -23,6 +23,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start menu -->
 <link href="${pageContext.request.contextPath}/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/memenu.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.cookie.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="${pageContext.request.contextPath}/js/simpleCart.min.js"> </script>
 <!-- slide -->
@@ -60,7 +61,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </c:otherwise>
                 </c:choose>
                 <div class="cart box_1">
-                    <a href="checkout.html">
+                    <a href="${pageContext.request.contextPath}/cart.html">
                         <h3> <div class="total">
                             <span class="simpleCart_total"></span></div>
                             <img src="${pageContext.request.contextPath}/images/cart.png" alt=""/></h3>

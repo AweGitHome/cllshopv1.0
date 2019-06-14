@@ -1,29 +1,50 @@
 package cn.edu.lnsf.controller;
 
+import cn.edu.lnsf.entity.Product;
+import cn.edu.lnsf.service.ProductsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
-@RequestMapping("shopcar")
 public class ShopCarController {
 
-    @RequestMapping("getids")
-    @ResponseBody
-    void getIds(HttpServletRequest request,int id){
-        HttpSession session = request.getSession();
-        if(session.getAttribute("ids") != null) {
-            String ids = (String)session.getAttribute("ids");
-            ids = ids + "," + id;
-            System.out.println(ids);
-            session.setAttribute("ids",ids);
-        }else {
-            session.setAttribute("ids",id);
-        }
+    private ProductsService productsService;
 
+    @Autowired
+    public void setProductsService(ProductsService productsService) {
+        this.productsService = productsService;
     }
+
+    @RequestMapping("cart.html")
+    String goCartPage(HttpServletRequest request){
+        List<Integer> ids = new ArrayList<>();
+        int id;
+        Cookie[] cookies = request.getCookies();
+        if (null==cookies) {//如果没有cookie数组
+            System.out.println("没有cookie");
+        } else {
+            for(Cookie cookie : cookies){
+                System.out.println(cookie.getName());
+                System.out.println(cookie.getName().indexOf("id"));
+                if(cookie.getName().indexOf("id")!=0||"JSESSIONID".equals(cookie.getName())){
+                    continue;
+                }
+                System.out.println(cookie.getValue());
+                id = Integer.parseInt(cookie.getValue());
+                ids.add(id);
+            }
+        }
+        List<Product> prod = productsService.getProdByIds(ids);
+        request.setAttribute("order_products",prod);
+        return "forward:/checkout.jsp";
+    }
+
+
 
 }

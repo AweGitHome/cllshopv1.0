@@ -26,19 +26,21 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="trclass">
-                <td class="tdone xuhao">1</td>
-                <td class="ring-in"><a href="single.html" class="at-in"><img src="images/ce.jpg" class="img-responsive" alt=""></a>
-                    <div class="sed">
-                        <h5>Sed ut perspiciatis unde</h5>
-                        <p>(At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium) </p>
-                    </div>
-                    <div class="clearfix"> </div></td>
-                <td class="tdthree"><span class="jiajie"><input type="button" value="-"><span class="num">0</span><input type="button" value="+"></span></td>
-                <td class="tdfour"><span class="unit">2</span></td>
-                <td class="tdfive"><span class="subtal">0</span></td>
-                <td class="tdsix"><button class="del">删除</button></td>
-            </tr>
+            <c:forEach items="${order_products}" var="prod" varStatus="v">
+                <tr class="trclass">
+                    <td class="tdone xuhao">${v.count}</td>
+                    <td class="ring-in"><a href="single.html" class="at-in"><img src="${prod.images}" class="img-responsive" alt=""></a>
+                        <div class="sed">
+                            <h5>${prod.name}</h5>
+                            <p>${prod.description}</p>
+                        </div>
+                        <div class="clearfix"> </div></td>
+                    <td class="tdthree"><span class="jiajie"><input type="button" value="-"><span class="num">0</span><input type="button" value="+"></span></td>
+                    <td class="tdfour"><span>￥</span><span class="unit">${prod.price/100}</span></td>
+                    <td class="tdfive"><span class="subtal">0</span></td>
+                    <td class="tdsix"><button class="del">删除</button></td>
+                </tr>
+            </c:forEach>
             <%--<tr><td   colspan="6"; class="talast"><span>商品一共 <span class="goods_num">0</span> 件; 共计花费 <span class="pricetal">0</span> 元; 其中最贵的商品单价是 <span class="pricest">0</span> 元</span></td></tr>--%>
             </tbody>
         </table>

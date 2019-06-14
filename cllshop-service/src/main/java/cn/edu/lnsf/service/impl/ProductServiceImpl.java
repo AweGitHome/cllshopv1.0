@@ -105,4 +105,9 @@ public class ProductServiceImpl implements ProductsService {
         return hotList;
     }
 
+    public List<Product> getProdByIds(List<Integer> ids) {
+        ProductExample example = new ProductExample();
+        example.createCriteria().andIdIn(ids);
+        return productMapper.selectByExample(example);
+    }
 }
