@@ -8,7 +8,26 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<jsp:include page="commonheader.jsp"/>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<jsp:include page="commonheader.jsp"></jsp:include>
+<script type="application/x-javascript">
+    $(document).ready(function () {
+        $("#addcard").click(function () {
+            var proid = $("#proId").html();
+            alert(proid);
+            $.ajax({
+                url:"${pageContext.request.contextPath}/shopcar/getids",
+                type:"post",
+                dataType:"json",
+                data:{id:proid},
+                async:true,
+                success:function (result) {
+
+                }
+            });
+        });
+    });
+</script>
 <title>商品</title>
 <div class="single">
     <div class="container">
@@ -25,6 +44,7 @@
                 <div class="single-para simpleCart_shelfItem">
                     <h1>${pro.name}</h1>
                     <p>${pro.description}</p>
+                    <div class="text-info" id="proId">${pro.id}</div>
                     <div class="star-on">
                         <ul>
                             <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
@@ -33,10 +53,7 @@
                             <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
                             <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
                         </ul>
-                        <div class="review">
-                            <a href="#"> 3 reviews </a>/
-                            <a href="#">  Write a review</a>
-                        </div>
+
                         <div class="clearfix"> </div>
                     </div>
 
@@ -99,4 +116,4 @@
             <div class="clearfix"> </div>
         </div>
     </div>
-    <jsp:include page="commonfooter.jsp"/>
+    <jsp:include page="commonfooter.jsp"></jsp:include>

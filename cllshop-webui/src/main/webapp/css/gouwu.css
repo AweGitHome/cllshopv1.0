@@ -1,0 +1,21 @@
+table{
+    width:50%;
+    position:relative;
+    margin:30px auto;
+    border-collapse: collapse;
+    border:1px solid gray;
+}
+th{
+    background: cornflowerblue;
+    height:2.5em;
+}
+
+.num{
+    display:inline-block;
+    width:3em;
+}
+input{
+}
+.talast{
+    text-align: left;
+}
