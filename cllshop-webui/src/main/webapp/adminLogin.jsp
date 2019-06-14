@@ -14,7 +14,7 @@
     <!--自定义div装form,可调整位置-->
     <label class="self-form-label">用户登录</label>
     <!--layui-form表单提交-->
-    <form class="layui-form" action="${pageContext.request.contextPath}/admin/login">
+    <form class="layui-form" action="${pageContext.request.contextPath}/admin1/login">
         <div class="layui-form-item">
             <div class="layui-input-inline">
                 <input type="text" name="username" id="username" lay-verify="required" autocomplete="off" placeholder="请输入用户名" class="layui-input" style="width:250px;height:30px">
@@ -29,7 +29,7 @@
         <div id="submitItem">
             <button type="submit" class="layui-btn layui-btn-fluid">登录</button>
         </div>
-        <div id="submitItem">
+        <div>
             <span class="layui-text">${msg}</span>
         </div>
     </form>

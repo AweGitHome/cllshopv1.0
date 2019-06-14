@@ -13,12 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 @RequestMapping("product")
@@ -43,7 +39,7 @@ public class ProductController {
         int curpage = Integer.parseInt(curPage);
         PageBean pageInfo = productsService.getPageData(curpage);
         request.setAttribute("pageInfo",pageInfo);
-        return "forward:/admin/productList.jsp";
+        return "forward:/admin/jsp/productList.jsp";
     }
 
     @RequestMapping("showPro")
@@ -110,10 +106,10 @@ public class ProductController {
         Map<String,Object> map = new HashMap<>();
         if(productsService.addProduct(product)!=0){
             request.setAttribute("msg","添加成功");
-            return "forward:/admin/product-add.jsp";
+            return "forward:/admin/jsp/product-add.jsp";
         }
         request.setAttribute("msg","添加失败");
-        return "forward:/admin/product-add.jsp";
+        return "forward:/admin/jsp/product-add.jsp";
     }
 
     @RequestMapping("delBatch")
@@ -126,5 +122,35 @@ public class ProductController {
         }
         return map;
     }
+
+    @RequestMapping("changeHotStatus")
+    @ResponseBody
+    void changeHotStatus(Product product){
+        if(product.getHot()!=0){
+            product.setHottime(new Date());
+        }
+        productsService.updateProduct(product);
+    }
+
+    @RequestMapping("goProdEditPage")
+    String goProdEditPage(HttpServletRequest request,int id){
+        Product product = productsService.getOneByIdAndSid(id,1);
+        product.setPrice(product.getPrice()/100);
+        request.setAttribute("product",product);
+        return "forward:/admin/jsp/product-edit.jsp";
+    }
+
+    @RequestMapping("edit")
+    String edit(Product product,HttpServletRequest request){
+        Map<String,Object> map = new HashMap<>();
+        if(productsService.updateProduct(product)!=0){
+            request.setAttribute("msg","修改成功");
+            return "forward:/admin/jsp/product-add.jsp";
+        }
+        request.setAttribute("msg","修改失败");
+        return "forward:/admin/jsp/product-add.jsp";
+    }
+
+
 
 }

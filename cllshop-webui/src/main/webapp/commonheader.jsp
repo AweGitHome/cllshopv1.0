@@ -52,7 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-sm-4 header-left">
                 <c:choose>
                     <c:when test="${userInfo!=null}">
-                        <p class="log">欢迎你的到来，${userInfo.username}</p>
+                        <p class="log">欢迎你的到来，${userInfo.username}&nbsp;<a href="#">退出登录</a></p>
                     </c:when>
                     <c:otherwise>
                         <p class="log"><a href="${pageContext.request.contextPath}/login.jsp">登录</a>

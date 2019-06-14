@@ -44,6 +44,20 @@
     <servlet-name>springmvc</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/js/*</url-pattern>
+    <url-pattern>/css/*</url-pattern>
+    <url-pattern>/fonts/*</url-pattern>
+    <url-pattern>/uploadProImg/*</url-pattern>
+    <url-pattern>/images/*</url-pattern>
+    <url-pattern>/admin/javascript/*</url-pattern>
+    <url-pattern>/admin/css/*</url-pattern>
+    <url-pattern>/admin/icheck/*</url-pattern>
+    <url-pattern>/admin/img/*</url-pattern>
+    <url-pattern>/admin/layui/*</url-pattern>
+    <url-pattern>/admin/seftjs/*</url-pattern>
+  </servlet-mapping>
 
   <!--编码过滤器 -->
   <filter>
@@ -58,9 +72,18 @@
       <param-value>true</param-value>
     </init-param>
   </filter>
+    <filter>
+        <filter-name>logFilter</filter-name>
+        <filter-class>cn.edu.lnsf.filter.LogFilter</filter-class>
+    </filter>
   <!-- 路径映射 -->
   <filter-mapping>
     <filter-name>characterEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+    <filter-mapping>
+        <filter-name>logFilter</filter-name>
+        <url-pattern>/storeregister.jsp</url-pattern>
+        <url-pattern>/admin/jsp/*</url-pattern>
+    </filter-mapping>
 </web-app>

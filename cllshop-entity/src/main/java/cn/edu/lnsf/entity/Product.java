@@ -62,8 +62,6 @@ public class Product implements Serializable {
         this.bigType = bigType;
     }
 
-
-
     public Integer getId() {
         return id;
     }

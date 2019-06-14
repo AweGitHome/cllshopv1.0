@@ -36,6 +36,11 @@ public class ProductServiceImpl implements ProductsService {
         return products;
     }
 
+    public Product getOneByIdAndSid(int pid, int sid) {
+        Product product = productMapper.selByStoreIdAndPid(sid, pid);
+        return product;
+    }
+
     public List<Product> getProductBySTId(int smallTypeId){
         ProductExample example = new ProductExample();
         example.createCriteria().andSmalltypeidEqualTo(smallTypeId);
@@ -55,9 +60,8 @@ public class ProductServiceImpl implements ProductsService {
     }
 
     public int updateProduct(Product product) {
-        ProductExample example = new ProductExample();
-        example.createCriteria().andIdEqualTo(product.getId());
-        return productMapper.updateByExampleSelective(product,example);
+        product.setUpdatetime(new Date());
+        return productMapper.updateByPrimaryKeySelective(product);
     }
 
     public int delProduct(int productId) {
@@ -100,4 +104,5 @@ public class ProductServiceImpl implements ProductsService {
         List<Product> hotList = productMapper.selectByExample(example);
         return hotList;
     }
+
 }

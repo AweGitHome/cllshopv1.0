@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="commonheader.jsp"></jsp:include>
+<jsp:include page="commonheader.jsp"/>
 <title>商家入驻</title>
 <script type="application/x-javascript">
     $(document).ready(function () {
@@ -49,10 +49,10 @@
                     success: function (result) {
                         if (result.msg == '入驻申请提交成功') {
                             alert("入驻申请提交成功！审核将在三个工作日内完成！")
-                            window.location.href = "${pageContext.request.contextPath}/storeregister.jsp"
+                            window.location.href = "storeregister.jsp"
                         } else {
                             alert("入驻申请提交失败！请重新提交申请！")
-                            window.location.href = "${pageContext.request.contextPath}/storeregister.jsp"
+                            window.location.href = "storeregister.jsp"
                         }
                     }
                 });

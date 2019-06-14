@@ -65,7 +65,7 @@ public class StoreController {
         int curpage = Integer.parseInt(curPage);
         PageBean pageInfo = storeService.getAudPageData(curpage);
         request.setAttribute("pageInfo",pageInfo);
-        return "forward:/admin/auditing.jsp";
+        return "forward:/admin/jsp/auditing.jsp";
     }
 
     @RequestMapping("passRegister")

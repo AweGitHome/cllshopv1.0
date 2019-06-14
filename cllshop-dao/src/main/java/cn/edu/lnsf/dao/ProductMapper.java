@@ -30,4 +30,6 @@ public interface ProductMapper {
     int updateByPrimaryKey(Product record);
 
     List<Product> selAllByStoreId(@Param("id") Integer storeId);
+
+    Product selByStoreIdAndPid(@Param("sid") Integer storeId,@Param("pid") Integer pid);
 }

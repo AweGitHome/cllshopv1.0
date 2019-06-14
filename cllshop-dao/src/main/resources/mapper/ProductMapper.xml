@@ -385,4 +385,16 @@
     </where>
   </select>
 
+  <select id="selByStoreIdAndPid" resultMap="resultByStoreId">
+    select products.*,smalltype.id sid, smalltype.name sname,bigtype.id bid,bigtype.name bname
+    from products,smalltype,bigtype
+    <where>
+      and products.smallTypeId=smalltype.id
+      and products.bigTypeId=bigtype.id
+      and products.storeId=#{sid}
+      and products.status=1
+      and products.id=#{pid}
+    </where>
+  </select>
+
 </mapper>

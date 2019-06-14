@@ -64,7 +64,7 @@
                             <td>${book.category.cname }</td>
                             <td class="text-center">
                                 <div class="layui-btn-group">
-                                    <button class="layui-btn layui-btn-xs layui-btn-normal dw-dailog" dw-url="${pageContext.request.contextPath }/book.action?method=goEditPage&bid=${book.bid}" dw-title="编辑用户" dw-width="80%" dw-height="80%">
+                                    <button class="layui-btn layui-btn-xs layui-btn-normal dw-dailog" dw-url="${pageContext.request.contextPath }/goProdEditPage" dw-title="编辑用户" dw-width="80%" dw-height="80%">
                                         <i class="layui-icon">&#xe642;</i>编辑
                                     </button>
                                     <button class="layui-btn layui-btn-xs layui-btn-danger dw-delete" dw-url="${pageContext.request.contextPath }/book.action?method=deleteBook&bid=${book.bid}" dw-title="${book.bname }">

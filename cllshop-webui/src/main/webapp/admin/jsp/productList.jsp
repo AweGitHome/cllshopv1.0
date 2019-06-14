@@ -36,7 +36,18 @@
                 }
             })
 		});
-	})
+	});
+
+	function changeHot(id) {
+		$.post("/product/changeHotStatus",{id:id,hot:1},function (result) {
+			window.location.reload();
+		})
+	}
+	function changeNoHot(id) {
+		$.post("/product/changeHotStatus",{id:id,hot:0},function (result) {
+			window.location.reload();
+		})
+	}
 
 	</script>
 </head>
@@ -73,7 +84,6 @@
 							<th>库存</th>
 							<th>子类别</th>
 							<th>父类别</th>
-							<th>商家名称</th>
 							<th>是否热销</th>
 							<th>热销时间</th>
 							<th>创建时间</th>
@@ -93,10 +103,17 @@
 								<td>${product.stock}</td>
 								<td>${product.smallType.name}</td>
 								<td>${product.bigType.name}</td>
-								<td>${product.store.name}</td>
 								<td>
-									<c:if test="${product.hot==0 }">否</c:if>
-			   						<c:if test="${product.hot!=0 }">是</c:if>
+									<c:if test="${product.hot==0 }">
+										<button class="layui-btn layui-btn-xs layui-btn-warm" id="setNoHotBtn" onclick="changeHot(${product.id})">
+											<i class="layui-icon">&#xe642;</i>否
+										</button>
+									</c:if>
+			   						<c:if test="${product.hot!=0 }">
+										<button class="layui-btn layui-btn-xs layui-btn-normal" id="setHotBtn" onclick="changeNoHot(${product.id})">
+											<i class="layui-icon">&#xe642;</i>是
+										</button>
+									</c:if>
 								</td>
 								<td><fmt:formatDate value="${product.hottime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 								<td><fmt:formatDate value="${product.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
@@ -107,7 +124,7 @@
 								</td>
 								<td class="text-center">
 									<div class="layui-btn-group">
-										<button class="layui-btn layui-btn-xs layui-btn-normal dw-dailog" dw-url="#" dw-title="编辑用户" dw-width="80%" dw-height="80%">
+										<button class="layui-btn layui-btn-xs layui-btn-normal dw-dailog" dw-url="${pageContext.request.contextPath}/product/goProdEditPage?id=${product.id}" dw-title="编辑用户" dw-width="80%" dw-height="80%">
 											<i class="layui-icon">&#xe642;</i>编辑
 										</button>
 										<button class="layui-btn layui-btn-xs layui-btn-danger dw-delete" dw-url="#" dw-title="${product.name }">

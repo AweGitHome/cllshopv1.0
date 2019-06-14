@@ -61,4 +61,4 @@
         </div>
     </div>
 </div>
-<jsp:include page="commonfooter.jsp"></jsp:include>
+<jsp:include page="commonfooter.jsp"/>

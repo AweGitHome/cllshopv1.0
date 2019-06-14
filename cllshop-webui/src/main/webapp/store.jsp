@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<jsp:include page="commonheader.jsp"></jsp:include>
+<jsp:include page="commonheader.jsp"/>
 <title>已入驻商家</title>
 <!--content-->
 <div class="content">

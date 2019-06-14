@@ -59,7 +59,7 @@
                         async:true,
                         success:function (result) {
                             if(result.msg=='注册成功'){
-                                window.location.href = "${pageContext.request.contextPath}/login.jsp"
+                                window.location.href = "adminLogin.jsp"
                                 $("#regSuccess").html(result.msg);
                             }else{
                                 $("#regFail").html(result.msg);
@@ -230,4 +230,4 @@
         </div>
     </div>
 </div>
-<jsp:include page="commonfooter.jsp"></jsp:include>
+<jsp:include page="commonfooter.jsp"/>

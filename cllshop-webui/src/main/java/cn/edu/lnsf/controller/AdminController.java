@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("admin")
+@RequestMapping("admin1")
 public class AdminController {
 
     private UserService userService;
@@ -27,9 +27,9 @@ public class AdminController {
         if(login==null){
             session.setAttribute("userInfo",user);
             request.setAttribute("msg","用户名或密码错误");
-            return "forward:/login.jsp";
+            return "forward:/adminLogin.jsp";
         }
-        return "redirect:/admin/index.jsp";
+        return "redirect:/admin/jsp/index.jsp";
     }
 
 }

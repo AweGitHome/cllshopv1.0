@@ -12,11 +12,10 @@
     <!-- 自动扫描包，实现支持注解的IOC -->
     <context:component-scan base-package="cn.edu.lnsf" />
 
-    <!-- Spring MVC不处理静态资源 -->
-    <mvc:default-servlet-handler />
-
     <!-- 支持mvc注解驱动 -->
     <mvc:annotation-driven enable-matrix-variables="true" />
+
+    <mvc:default-servlet-handler />
 
     <!--&lt;!&ndash; 配置映射媒体类型的策略 &ndash;&gt;-->
     <!--<bean-->
