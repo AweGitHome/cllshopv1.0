@@ -19,4 +19,5 @@ public interface ProductsService {
     Product getOneByIdAndSid(int pid,int sid);
     List<Product> getProdByIds(List<Integer> ids);
     List<Product> getProductByStoId(int storeId);
+    List<Product> getLastProduct();
 }

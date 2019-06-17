@@ -105,6 +105,13 @@ public class ProductServiceImpl implements ProductsService {
         return false;
     }
 
+    public List<Product> getLastProduct() {
+        ProductExample example = new ProductExample();
+        example.setOrderByClause("createtime desc limit 8");
+        List<Product> list = productMapper.selectByExample(example);
+        return list;
+    }
+
     public List<Product> getHotProduct() {
         ProductExample example = new ProductExample();
         example.createCriteria().andHotEqualTo(1).andStatusEqualTo(1);

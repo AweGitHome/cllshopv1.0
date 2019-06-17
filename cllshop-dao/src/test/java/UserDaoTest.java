@@ -1,5 +1,6 @@
 import cn.edu.lnsf.dao.*;
-import cn.edu.lnsf.entity.OrdersProduct;
+import cn.edu.lnsf.entity.Product;
+import cn.edu.lnsf.entity.ProductExample;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,9 @@ public class UserDaoTest {
 
     @Test
     public void test1(){
-        List<OrdersProduct> list = ordersProductMapper.selByOrderId(5);
+        ProductExample example = new ProductExample();
+        example.setOrderByClause("createtime desc limit 8");
+        List<Product> products = productMapper.selectByExample(example);
         return;
     }
 }

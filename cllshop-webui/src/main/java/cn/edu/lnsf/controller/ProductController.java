@@ -31,7 +31,7 @@ public class ProductController {
         this.smallTypeService = smallTypeService;
     }
 
-    @RequestMapping("showProList")
+    @RequestMapping("store_manage.html")
     public String showProductsList(String curPage, HttpServletRequest request){
         if(curPage==null){
             curPage = "1";

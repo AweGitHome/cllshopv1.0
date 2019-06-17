@@ -30,9 +30,11 @@ public class IndexController {
         HttpSession session = request.getSession();
         List<BigType> bigTypes = bigTypeService.findAll();
         List<Product> hotList = productsService.getHotProduct();
+        List<Product> lastProduct = productsService.getLastProduct();
         if(session.getAttribute("bigTypes")==null)
         session.setAttribute("bigTypes",bigTypes);
         session.setAttribute("hotList",hotList);
+        session.setAttribute("newList",lastProduct);
         return "redirect:/index.jsp";
     }
 }

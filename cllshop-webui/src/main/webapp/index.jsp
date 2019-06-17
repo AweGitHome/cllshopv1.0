@@ -53,7 +53,6 @@
                         <h3><a href="${pageContext.request.contextPath }/product/showPro/?productId=${hot.id}">${hot.name}</a></h3>
                         <div class="price">
                             <h5 class="item_price">￥${hot.price/100}</h5>
-                            <a href="#" class="item_add">加入购物车</a>
                             <div class="clearfix"> </div>
                         </div>
                     </div>
@@ -73,20 +72,20 @@
             <div class="content-top">
                 <h1>最新商品</h1>
                 <div class="content-top1">
-                    <div class="col-md-3 col-md2">
-                        <div class="col-md1 simpleCart_shelfItem">
-                            <a href="single.html">
-                                <img class="img-responsive" src="images/pi.png" alt="" />
-                            </a>
-                            <h3><a href="single.html">Tops</a></h3>
-                            <div class="price">
-                                <h5 class="item_price">$300</h5>
-                                <a href="#" class="item_add">Add To Cart</a>
-                                <div class="clearfix"> </div>
+                    <c:forEach var="newlist" items="${newList}">
+                        <div class="col-md-3 col-md2">
+                            <div class="col-md1 simpleCart_shelfItem" style="width: 250px;height: 250px">
+                                <a href="${pageContext.request.contextPath }/product/showPro/?productId=${newlist.id}">
+                                    <img class="img-responsive" width="50%" src="${newlist.images}" alt="" />
+                                </a>
+                                <h3><a href="${pageContext.request.contextPath }/product/showPro/?productId=${newlist.id}">${newlist.name}</a></h3>
+                                <div class="price">
+                                    <h5 class="item_price">￥${newlist.price/100}</h5>
+                                    <div class="clearfix"> </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
+                    </c:forEach>
                 </div>
                 <div class="clearfix"> </div>
             </div>
