@@ -28,4 +28,6 @@ public interface OrdersProductMapper {
     int updateByPrimaryKeySelective(OrdersProduct record);
 
     int updateByPrimaryKey(OrdersProduct record);
+
+    List<OrdersProduct> selByOrderId(Integer oid);
 }

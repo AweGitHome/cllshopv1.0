@@ -17,16 +17,6 @@ public class Order implements Serializable {
 
     private Integer status;
 
-    private List<OrdersProduct> ordersDetail;
-
-    public List<OrdersProduct> getOrdersDetail() {
-        return ordersDetail;
-    }
-
-    public void setOrdersDetail(List<OrdersProduct> ordersDetail) {
-        this.ordersDetail = ordersDetail;
-    }
-
     public Integer getId() {
         return id;
     }

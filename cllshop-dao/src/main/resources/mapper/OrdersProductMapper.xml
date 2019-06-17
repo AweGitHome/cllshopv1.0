@@ -8,6 +8,19 @@
     <result column="productid" property="productid" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
+  <resultMap id="MyResultMap" type="cn.edu.lnsf.entity.OrdersProduct" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="orderid" property="orderid" jdbcType="INTEGER" />
+    <result column="productid" property="productid" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <association property="product" javaType="cn.edu.lnsf.entity.Product">
+      <id property="id" column="pid"/>
+      <result property="name" column="pname"/>
+      <result property="images" column="pimages"/>
+      <result property="price" column="pprice"/>
+    </association>
+  </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -208,4 +221,12 @@
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selByOrderId" resultMap="MyResultMap">
+    select orders_product.*,products.id pid,products.name pname,products.price pprice,products.images pimages
+    from orders_product,products
+    <where>
+      and orders_product.productid=products.id
+      and orders_product.orderid = #{oid}
+    </where>
+  </select>
 </mapper>

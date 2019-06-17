@@ -9,23 +9,6 @@
     <result column="userid" property="userid" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
-  <resultMap id="OrderDetailResultMap" type="cn.edu.lnsf.entity.Order" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="cost" property="cost" jdbcType="BIGINT" />
-    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
-    <result column="orderNum" property="ordernum" jdbcType="VARCHAR" />
-    <result column="userid" property="userid" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="INTEGER" />
-    <collection property="ordersDetail" ofType="cn.edu.lnsf.entity.OrdersProduct">
-      <id column="opid" property="id"/>
-      <result property="num" column="opnum"/>
-      <association property="product" javaType="cn.edu.lnsf.entity.Product">
-        <id column="pid" property="id"/>
-        <result column="pname" property="name"/>
-        <result column="pprice" property="price"/>
-      </association>
-    </collection>
-  </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

@@ -3,10 +3,7 @@ package cn.edu.lnsf.service.impl;
 import cn.edu.lnsf.dao.OrderMapper;
 import cn.edu.lnsf.dao.OrdersProductMapper;
 import cn.edu.lnsf.dao.ProductMapper;
-import cn.edu.lnsf.entity.Order;
-import cn.edu.lnsf.entity.OrdersProduct;
-import cn.edu.lnsf.entity.Product;
-import cn.edu.lnsf.entity.ProductExample;
+import cn.edu.lnsf.entity.*;
 import cn.edu.lnsf.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,5 +55,17 @@ public class OrderServiceImpl implements OrderService {
             }
         }
         return i;
+    }
+
+    public List<Order> getAllOrdersByUid(Integer uid) {
+        OrderExample orderExample = new OrderExample();
+        orderExample.createCriteria().andUseridEqualTo(uid);
+        List<Order> orders = orderMapper.selectByExample(orderExample);
+        return orders;
+    }
+
+    public List<OrdersProduct> getOrderDetailByOid(Integer oid) {
+        List<OrdersProduct> list = ordersProductMapper.selByOrderId(oid);
+        return list;
     }
 }
