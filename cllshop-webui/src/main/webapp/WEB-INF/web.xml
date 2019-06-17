@@ -85,5 +85,6 @@
         <filter-name>logFilter</filter-name>
         <url-pattern>/storeregister.jsp</url-pattern>
         <url-pattern>/admin/jsp/*</url-pattern>
+        <url-pattern>/submitOrder</url-pattern>
     </filter-mapping>
 </web-app>

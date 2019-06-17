@@ -25,10 +25,14 @@ public class AdminController {
     String login(User user, HttpSession session, HttpServletRequest request){
         User login = userService.login(user);
         if(login==null){
-            session.setAttribute("userInfo",user);
             request.setAttribute("msg","用户名或密码错误");
             return "forward:/adminLogin.jsp";
         }
+        if(login.getRole()!=0){
+            request.setAttribute("msg","请使用管理员账号登录");
+            return "forward:/adminLogin.jsp";
+        }
+        session.setAttribute("userInfo",login);
         return "redirect:/admin/jsp/index.jsp";
     }
 

@@ -48,7 +48,7 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">网页内容管理</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="#">商品列表</a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/admin/jsp/productList.jsp">商品列表</a></dd>
                     <dd><a href="#">大类别列表</a></dd>
                     <dd><a href="#">小类别列表</a></dd>
                 </dl>

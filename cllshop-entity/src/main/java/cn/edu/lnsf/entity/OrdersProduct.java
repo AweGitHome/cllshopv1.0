@@ -9,7 +9,19 @@ public class OrdersProduct {
 
     private Integer productid;
 
+    private float unit;
+
     private Integer status;
+
+    private Product product;
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
     public Integer getId() {
         return id;
@@ -49,5 +61,13 @@ public class OrdersProduct {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public float getUnit() {
+        return unit;
+    }
+
+    public void setUnit(float unit) {
+        this.unit = unit;
     }
 }

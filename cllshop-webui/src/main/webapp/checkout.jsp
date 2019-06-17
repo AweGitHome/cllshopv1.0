@@ -10,6 +10,36 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <jsp:include page="commonheader.jsp"></jsp:include>
 <script src="${pageContext.request.contextPath}/js/gouwu.js"></script>
+<script>
+    $(document).ready(function () {
+       $("#submitOrder").click(function () {
+           var idList = document.getElementsByName("id");
+           var numList = document.getElementsByName("num");
+           var unitList = document.getElementsByName("unit");
+           var param = [];
+           for(var i = 0; i < idList.length; i++){
+               param.push({productid:idList[i].innerHTML,num:numList[i].innerHTML,unit:unitList[i].innerHTML});
+           }
+           $.ajax({
+               url:"${pageContext.request.contextPath}/submitOrder",
+               data:JSON.stringify(param),
+               contentType: "application/json",//响应数据格式
+               dataType: "json", // 响应数据类型
+               type:"post",
+               success: function(data) {
+                   if(data.status==200){
+                       alert("提交订单成功");
+                   }else{
+                       alert("失败");
+                   }
+               },
+               error:function () {
+                   window.location.href = "/login.jsp";
+               }
+           })
+       });
+    });
+</script>
 <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/css/gouwu.css">--%>
 <div class="container">
     <div class="check-out">
@@ -27,6 +57,7 @@
             </thead>
             <tbody>
             <c:forEach items="${order_products}" var="prod" varStatus="v">
+                <span style="display: none" name="id">${prod.id}</span>
                 <tr class="trclass">
                     <td class="tdone xuhao">${v.count}</td>
                     <td class="ring-in"><a href="single.html" class="at-in"><img src="${prod.images}" class="img-responsive" alt=""></a>
@@ -35,16 +66,16 @@
                             <p>${prod.description}</p>
                         </div>
                         <div class="clearfix"> </div></td>
-                    <td class="tdthree"><span class="jiajie"><input type="button" value="-"><span class="num">0</span><input type="button" value="+"></span></td>
-                    <td class="tdfour"><span>￥</span><span class="unit">${prod.price/100}</span></td>
+                    <td class="tdthree"><span class="jiajie"><input type="button" value="-"><span class="num" name="num">0</span><input type="button" value="+"></span></td>
+                    <td class="tdfour"><span>￥</span><span class="unit" name="unit">${prod.price/100}</span></td>
                     <td class="tdfive"><span class="subtal">0</span></td>
                     <td class="tdsix"><button class="del">删除</button></td>
                 </tr>
             </c:forEach>
-            <%--<tr><td   colspan="6"; class="talast"><span>商品一共 <span class="goods_num">0</span> 件; 共计花费 <span class="pricetal">0</span> 元; 其中最贵的商品单价是 <span class="pricest">0</span> 元</span></td></tr>--%>
+            <tr><td   colspan="6"; class="talast"><span>商品一共 <span class="goods_num">0</span> 件; 共计花费 <span class="pricetal" id="cost">0</span> 元; 其中最贵的商品单价是 <span class="pricest">0</span> 元</span></td></tr>
             </tbody>
         </table>
-        <a href="#" class=" to-buy">提交订单</a>
+        <a href="#" id="submitOrder" class=" to-buy">提交订单</a>
         <div class="clearfix"> </div>
     </div>
 </div>

@@ -16,7 +16,12 @@ public class LogFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest)servletRequest;
         HttpServletResponse response = (HttpServletResponse)servletResponse;
         if(request.getSession().getAttribute("userInfo")==null){
-            response.sendRedirect("/login.jsp");
+            String requestURI = request.getRequestURI();
+            if(requestURI.contains("admin")){
+                response.sendRedirect("/adminLogin.jsp");
+            }else{
+                response.sendRedirect("/login.jsp");
+            }
         }
         filterChain.doFilter(request,response);
     }

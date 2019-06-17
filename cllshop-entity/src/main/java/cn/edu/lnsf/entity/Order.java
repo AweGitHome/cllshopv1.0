@@ -2,6 +2,7 @@ package cn.edu.lnsf.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Order implements Serializable {
     private Integer id;
@@ -15,6 +16,16 @@ public class Order implements Serializable {
     private Integer userid;
 
     private Integer status;
+
+    private List<OrdersProduct> ordersDetail;
+
+    public List<OrdersProduct> getOrdersDetail() {
+        return ordersDetail;
+    }
+
+    public void setOrdersDetail(List<OrdersProduct> ordersDetail) {
+        this.ordersDetail = ordersDetail;
+    }
 
     public Integer getId() {
         return id;
@@ -45,7 +56,7 @@ public class Order implements Serializable {
     }
 
     public void setOrdernum(String ordernum) {
-        this.ordernum = ordernum == null ? null : ordernum.trim();
+        this.ordernum = ordernum;
     }
 
     public Integer getUserid() {

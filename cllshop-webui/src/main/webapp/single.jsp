@@ -13,10 +13,12 @@
 <script type="application/x-javascript">
     $(document).ready(function () {
         $("#addcart").click(function () {
+            var cookietime = new Date();
+            cookietime.setTime(date.getTime() + (60 * 60 * 1000 * 12));//coockie保存一小时
             var id = $("#proId").val();
             var name = "id"+id;
             alert(name+","+id);
-            $.cookie(name,id,{path:"/"});
+            $.cookie(name,id,{path:"/",expires:cookietime});
         });
     });
 </script>

@@ -54,7 +54,7 @@ public class UserController {
             return "forward:/login.jsp";
         }
         //List<BigType> bigTypes = bigTypeService.findAll();
-        session.setAttribute("userInfo",user);
+        session.setAttribute("userInfo",login);
         //session.setAttribute("bigTypes",bigTypes);
         return "redirect:/index.jsp";
     }

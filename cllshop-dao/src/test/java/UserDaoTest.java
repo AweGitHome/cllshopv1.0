@@ -1,14 +1,12 @@
 import cn.edu.lnsf.dao.BigTypeMapper;
+import cn.edu.lnsf.dao.OrderMapper;
 import cn.edu.lnsf.dao.ProductMapper;
 import cn.edu.lnsf.dao.UserMapper;
-import cn.edu.lnsf.entity.BigType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.util.List;
 
 
 //指定bean注入的配置文件
@@ -22,12 +20,11 @@ public class UserDaoTest {
     ProductMapper productMapper;
     @Autowired
     BigTypeMapper bigTypeMapper;
+    @Autowired
+    OrderMapper orderMapper;
 
     @Test
     public void test1(){
-        //ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
-        //List<Product> list = productMapper.selAll();
-        List<BigType> list = bigTypeMapper.selAllTypes();
-        System.out.println(list);
+
     }
 }
