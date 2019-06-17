@@ -41,4 +41,10 @@ public interface UserService {
 
     boolean checkEmailIsUsed(User user);
 
+    int updateUser(User user);
+
+    User getUserByUsername(String userName);
+
+    User getUserById(int userId);
+
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
@@ -66,5 +67,23 @@ public class UserServiceImpl implements UserService {
             return true;
         }
         return false;
+    }
+
+    public int updateUser (User user){
+        return userMapper.updateByPrimaryKeySelective(user);
+    }
+
+    public User  getUserByUsername(String userName){
+       UserExample example = new UserExample();
+       example.createCriteria().andUsernameEqualTo(userName);
+        List<User> user = userMapper.selectByExample(example);
+       return user.get(0);
+    }
+
+    public User  getUserById(int userId){
+        UserExample example = new UserExample();
+        example.createCriteria().andIdEqualTo(userId);
+        List<User> user = userMapper.selectByExample(example);
+        return user.get(0);
     }
 }

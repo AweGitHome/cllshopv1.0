@@ -19,3 +19,6 @@ input{
 .talast{
     text-align: left;
 }
+.stock{
+    display:none;
+}

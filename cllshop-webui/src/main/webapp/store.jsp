@@ -19,13 +19,13 @@
                 <c:forEach items="${stores }" var="store">
                     <div class="col-md-3 col-md2" >
                         <div class="col-md1 simpleCart_shelfItem"style="width: 200px">
-                            <a href="single.html">
-                                <img class="img-responsive" src="${store.storepic}" alt="" />
+                            <a href="${pageContext.request.contextPath }/product/showProByStorid/?storeId=${store.id}">
+                                <img class="img-responsive"  src="${store.storepic}" alt="" />
                             </a>
-                            <h3><a href="single.html">${store.name}</a></h3>
+                            <h3><a href="${pageContext.request.contextPath }/product/showProByStorid/?storeId=${store.id}">${store.name}</a></h3>
                             <div class="price">
                                 <h5 class="item_price">${store.info}</h5>
-                                <a href="#" class="item_add">进入</a>
+                                <a href="${pageContext.request.contextPath }/product/showProByStorid/?storeId=${store.id}" class="item_add">进入</a>
                                 <div class="clearfix"> </div>
                             </div>
                         </div>

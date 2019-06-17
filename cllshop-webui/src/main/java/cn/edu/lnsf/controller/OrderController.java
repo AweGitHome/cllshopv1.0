@@ -30,6 +30,6 @@ public class OrderController {
     String showDetails(Integer oid, HttpServletRequest request){
         List<OrdersProduct> orderDetails = orderService.getOrderDetailByOid(oid);
         request.setAttribute("orderDetails",orderDetails);
-        return "forward:/orderDetails.jsp";
+        return "forward:/showorderdetails.jsp";
     }
 }

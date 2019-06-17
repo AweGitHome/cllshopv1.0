@@ -6,7 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -28,6 +30,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="${pageContext.request.contextPath}/js/simpleCart.min.js"> </script>
 <!-- slide -->
 <script src="${pageContext.request.contextPath}/js/responsiveslides.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/fileinput.min.js"></script>
+<link href="${pageContext.request.contextPath}/css/fileinput.min.css" rel="stylesheet" type="text/css" media="all"/>
 <script>
     $(function () {
         $("#slider").responsiveSlides({
@@ -36,6 +40,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             namespace: "callbacks",
             pager: true,
         });
+        $("#logout").click(function () {
+            $.ajax({
+                url:"${pageContext.request.contextPath}/user/exit",
+                type:"post",
+                async:true,
+                success:function (result) {
+                        window.location.href = "${pageContext.request.contextPath}/"
+                }
+            });
+        })
     });
 </script>
 </head>
@@ -49,11 +63,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-sm-4 logo">
                 <a href="index.html"><img src="${pageContext.request.contextPath}/images/logo.png" alt=""></a>
             </div>
-
             <div class="col-sm-4 header-left">
                 <c:choose>
                     <c:when test="${userInfo!=null}">
-                        <p class="log">欢迎你的到来，${userInfo.username}&nbsp;<a href="#">退出登录</a></p>
+                        <p class="log"><a style="width: 20%" href="${pageContext.request.contextPath}/user/showinfo?userName=${userInfo.username}">${userInfo.username}</a>&nbsp;<a style="width: 20%" href="${pageContext.request.contextPath}/orders.html?uid=${userInfo.id}" id="mylist">我的订单</a>&nbsp;<a style="width: 20%" href="#" id="logout">退出登录</a></p>
                     </c:when>
                     <c:otherwise>
                         <p class="log"><a href="${pageContext.request.contextPath}/login.jsp">登录</a>
@@ -63,10 +76,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="cart box_1">
                     <a href="${pageContext.request.contextPath}/cart.html">
                         <h3> <div class="total">
-                            <span class="simpleCart_total"></span></div>
+                            <br/>
+                            <span >购物车</span></div>
                             <img src="${pageContext.request.contextPath}/images/cart.png" alt=""/></h3>
                     </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">空</a></p>
                 </div>
                 <div class="clearfix"> </div>
             </div>

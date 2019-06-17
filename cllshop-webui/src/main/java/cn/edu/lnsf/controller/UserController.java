@@ -10,8 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -104,6 +108,44 @@ public class UserController {
             map.put("msg","验证码错误");
         }
         return map;
+    }
+
+    @RequestMapping("showinfo")
+    public String showInfo(String userName,HttpServletRequest request){
+        User user = userService.getUserByUsername(userName);
+        request.setAttribute("user",user);
+        return "forward:/userinformation.jsp";
+    }
+
+    @RequestMapping("upadateinfo")
+    @ResponseBody
+    Map<String,Object> updateInfo(User user,String birthday_,HttpServletRequest request){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Map<String,Object> map = new HashMap<>();
+        try {
+            Date birthday = simpleDateFormat.parse(birthday_);
+            map.put("msg","更新失败");
+            user.setBirthday(birthday);
+            if(userService.updateUser(user)!=0){
+                map.put("msg","更新成功");
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return map;
+    }
+
+    @RequestMapping("showinfo2")
+    public String showInfo(int userId,HttpServletRequest request){
+        User user = userService.getUserById(userId);
+        request.setAttribute("user",user);
+        return "forward:/updateinfo.jsp";
+    }
+
+    @RequestMapping("exit")
+    @ResponseBody
+    public void userExit(HttpServletRequest request){
+        request.getSession().removeAttribute("userInfo");
     }
 
 }

@@ -86,5 +86,7 @@
         <url-pattern>/storeregister.jsp</url-pattern>
         <url-pattern>/admin/jsp/*</url-pattern>
         <url-pattern>/submitOrder</url-pattern>
+        <url-pattern>/orders.html</url-pattern>
+        <url-pattern>/orderDetails.html</url-pattern>
     </filter-mapping>
 </web-app>

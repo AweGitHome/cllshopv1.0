@@ -58,6 +58,14 @@ public class ProductController {
         return "forward:/productList.jsp";
     }
 
+    @RequestMapping("showProByStorid")
+    public String showProByStorid(int storeId,HttpServletRequest request){
+        List<Product> products = productsService.getProductByStoId(storeId);
+        request.setAttribute("products",products);
+        return "forward:/storeshow.jsp";
+    }
+
+
 
     @RequestMapping("uploadPic")
     @ResponseBody
@@ -142,7 +150,6 @@ public class ProductController {
 
     @RequestMapping("edit")
     String edit(Product product,HttpServletRequest request){
-        Map<String,Object> map = new HashMap<>();
         if(productsService.updateProduct(product)!=0){
             request.setAttribute("msg","修改成功");
             return "forward:/admin/jsp/product-add.jsp";

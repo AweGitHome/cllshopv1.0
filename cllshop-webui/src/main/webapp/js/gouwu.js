@@ -36,15 +36,21 @@ window.onload = function(){
     // 点击“+”号按钮触发的购物车商品数量，花费，最大价格的变动
     cart.prototype.plus = function(obtn){
         var onum = obtn.parentNode.querySelector('.num');
+        var ostock = obtn.parentNode.querySelector('.stock');
         var n = parseInt(onum.innerHTML);
-        onum.innerHTML = ++n ;
-        this.totalnum++;
-        var oUnit = obtn.parentNode.parentNode.parentNode.querySelector('.unit');
-        var osubtotal = obtn.parentNode.parentNode.parentNode.querySelector('.subtal');
-        osubtotal.innerHTML = this.getsubtotal(onum.innerHTML,oUnit.innerHTML);
-        this.ogood_num.innerHTML = this.totalnum;
-        this.opricetal.innerHTML = this.gettotal();
-        this.opricest.innerHTML = this.compareMaxunit();
+        var m = parseInt(ostock.innerHTML);
+        if(n >= m){
+
+        }else {
+            onum.innerHTML = ++n ;
+            this.totalnum++;
+            var oUnit = obtn.parentNode.parentNode.parentNode.querySelector('.unit');
+            var osubtotal = obtn.parentNode.parentNode.parentNode.querySelector('.subtal');
+            osubtotal.innerHTML = this.getsubtotal(onum.innerHTML,oUnit.innerHTML);
+            this.ogood_num.innerHTML = this.totalnum;
+            this.opricetal.innerHTML = this.gettotal();
+            this.opricest.innerHTML = this.compareMaxunit();
+        }
     };
     // 点击“-”号按钮触发的购物车商品数量，花费，最大价格的变动
     cart.prototype.minus = function(obtn){

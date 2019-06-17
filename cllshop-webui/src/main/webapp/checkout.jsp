@@ -16,27 +16,35 @@
            var idList = document.getElementsByName("id");
            var numList = document.getElementsByName("num");
            var unitList = document.getElementsByName("unit");
-           var param = [];
-           for(var i = 0; i < idList.length; i++){
-               param.push({productid:idList[i].innerHTML,num:numList[i].innerHTML,unit:unitList[i].innerHTML});
-           }
-           $.ajax({
-               url:"${pageContext.request.contextPath}/submitOrder",
-               data:JSON.stringify(param),
-               contentType: "application/json",//响应数据格式
-               dataType: "json", // 响应数据类型
-               type:"post",
-               success: function(data) {
-                   if(data.status==200){
-                       alert("提交订单成功");
-                   }else{
-                       alert("失败");
-                   }
-               },
-               error:function () {
-                   window.location.href = "/login.jsp";
+           var num = 0;
+           for(var j = 0; j < numList.length; j++){
+                num += numList[j].innerHTML;
+           }if (num == 0){
+               alert("请选择购买数量!");
+           } else {
+               var param = [];
+               for(var i = 0; i < idList.length; i++){
+                   param.push({productid:idList[i].innerHTML,num:numList[i].innerHTML,unit:unitList[i].innerHTML});
                }
-           })
+               $.ajax({
+                   url:"${pageContext.request.contextPath}/submitOrder",
+                   data:JSON.stringify(param),
+                   contentType: "application/json",//响应数据格式
+                   dataType: "json", // 响应数据类型
+                   type:"post",
+                   success: function(data) {
+                       if(data.status==200){
+                           alert("提交订单成功");
+                           window.location.reload();
+                       }else{
+                           alert("失败");
+                       }
+                   },
+                   error:function () {
+                       window.location.href = "/login.jsp";
+                   }
+               })
+           }
        });
     });
 </script>
@@ -50,6 +58,7 @@
                 <th class="tdone">序号</th>
                 <th class="tdtwo">商品详情</th>
                 <th class="tdthree">数量</th>
+                <th class="tdthree">库存</th>
                 <th class="tdfour">单价</th>
                 <th class="tdfive">小计</th>
                 <th class="tdsix">操作</th>
@@ -66,7 +75,8 @@
                             <p>${prod.description}</p>
                         </div>
                         <div class="clearfix"> </div></td>
-                    <td class="tdthree"><span class="jiajie"><input type="button" value="-"><span class="num" name="num">0</span><input type="button" value="+"></span></td>
+                    <td class="tdthree"><span class="jiajie"><input type="button" value="-"><span class="num" name="num">0</span><span class="stock" style="display: none">${prod.stock}</span><input type="button" value="+"></span></td>
+                    <td class="tdfour"><span class="#">${prod.stock}</span></td>
                     <td class="tdfour"><span>￥</span><span class="unit" name="unit">${prod.price/100}</span></td>
                     <td class="tdfive"><span class="subtal">0</span></td>
                     <td class="tdsix"><button class="del">删除</button></td>

@@ -14,11 +14,17 @@
     $(document).ready(function () {
         $("#addcart").click(function () {
             var cookietime = new Date();
-            cookietime.setTime(date.getTime() + (60 * 60 * 1000 * 12));//coockie保存一小时
+            cookietime.setTime(cookietime.getTime() + (60 * 60 * 1000 * 12));//coockie保存一小时
             var id = $("#proId").val();
+            var stocknum = $("#stock").html();
             var name = "id"+id;
-            alert(name+","+id);
-            $.cookie(name,id,{path:"/",expires:cookietime});
+            if(stocknum == 0){
+                alert("所选商品无库存!")
+            }else {
+                $.cookie(name,id,{path:"/",expires:cookietime});
+            }
+            //alert(name+","+id);
+
         });
     });
 </script>
@@ -54,7 +60,7 @@
                     <label  class="add-to item_price">价格：￥${pro.price/100}</label>
 
                     <div class="available">
-                        <h6>库存：${pro.stock}</h6>
+                        <h6>库存：</h6><h6 id="stock">${pro.stock}</h6>
                     </div>
                     <a href="#" id="addcart" class="cart item_add">加入购物车</a>
                 </div>

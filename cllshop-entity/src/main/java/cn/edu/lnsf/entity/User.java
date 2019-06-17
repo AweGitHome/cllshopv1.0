@@ -12,7 +12,7 @@ public class User implements Serializable {
 
     private String truename;
 
-    private Integer gender;
+    private String gender;
 
     private String password;
 
@@ -58,11 +58,11 @@ public class User implements Serializable {
         this.truename = truename == null ? null : truename.trim();
     }
 
-    public Integer getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Integer gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

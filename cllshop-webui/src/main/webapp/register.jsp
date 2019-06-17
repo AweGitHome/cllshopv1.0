@@ -59,7 +59,7 @@
                         async:true,
                         success:function (result) {
                             if(result.msg=='注册成功'){
-                                window.location.href = "adminLogin.jsp"
+                                window.location.href = "login.jsp"
                                 $("#regSuccess").html(result.msg);
                             }else{
                                 $("#regFail").html(result.msg);

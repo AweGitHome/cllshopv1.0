@@ -48,6 +48,13 @@ public class ProductServiceImpl implements ProductsService {
         return products;
     }
 
+    public List<Product> getProductByStoId(int storeId){
+        ProductExample example = new ProductExample();
+        example.createCriteria().andStoreidEqualTo(storeId);
+        List<Product> products = productMapper.selectByExample(example);
+        return products;
+    }
+
     public int addProduct(Product product) {
         product.setStoreid(1);
         product.setCreatetime(new Date());

@@ -18,4 +18,5 @@ public interface ProductsService {
     List<Product> getProductBySTId(int smallTypeId);
     Product getOneByIdAndSid(int pid,int sid);
     List<Product> getProdByIds(List<Integer> ids);
+    List<Product> getProductByStoId(int storeId);
 }
