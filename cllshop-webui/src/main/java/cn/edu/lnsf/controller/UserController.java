@@ -126,6 +126,7 @@ public class UserController {
             Date birthday = simpleDateFormat.parse(birthday_);
             map.put("msg","更新失败");
             user.setBirthday(birthday);
+            user.setInfocomplete(1);
             if(userService.updateUser(user)!=0){
                 map.put("msg","更新成功");
             }

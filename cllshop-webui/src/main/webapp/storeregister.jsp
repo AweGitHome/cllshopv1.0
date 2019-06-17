@@ -33,7 +33,8 @@
         $("#submit").click(function () {
             var name = $("#name").val();
             var info = $("#info").val();
-            var store = {name: name,info:info};
+            var uid = ${userInfo.id};
+            var store = {name: name,info:info,userid:uid};
             if (name == '') {
                 $("#rightStorename").html("");
                 $("#errorStorename").html("店铺名不能为空");

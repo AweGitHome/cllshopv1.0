@@ -3,7 +3,9 @@ package cn.edu.lnsf.controller;
 import cn.edu.lnsf.entity.PageBean;
 import cn.edu.lnsf.entity.Product;
 import cn.edu.lnsf.entity.Store;
+import cn.edu.lnsf.entity.User;
 import cn.edu.lnsf.service.StoreService;
+import cn.edu.lnsf.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,17 +21,25 @@ import java.util.Map;
 public class StoreController {
 
     private StoreService storeService;
+    private UserService userService;
 
     @Autowired
     public void setStoreService(StoreService storeService) {
         this.storeService = storeService;
     }
 
+    @Autowired
+    public void setUserService(UserService userService) { this.userService = userService; }
+
     @RequestMapping("register")
     @ResponseBody
     Map<String, Object> register(Store store) {
         Map<String, Object> map = new HashMap<>();
         int index = storeService.storeRegister(store);
+        User user = new User();
+        user.setId(store.getUserid());
+        user.setRole(2);
+        userService.updateUser(user);
         if (index != 0) {
             map.put("msg", "入驻申请提交成功");
         } else {
