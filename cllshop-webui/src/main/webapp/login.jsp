@@ -11,7 +11,7 @@
     <script type="application/x-javascript">
         function login(){
             var username = $("#username").val();
-            temp = $("#password").val();
+            var temp = $("#password").val();
             if (username != "" && temp != ""){
             var password= $.md5(temp);
             console.log(password);

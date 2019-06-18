@@ -115,7 +115,7 @@
 										</button>
 									</c:if>
 								</td>
-								<td><fmt:formatDate value="${product.hottime }" var="time" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+								<td><fmt:formatDate value="${product.hottime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 								<td><fmt:formatDate value="${product.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 								<td><fmt:formatDate value="${product.updatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 								<td>

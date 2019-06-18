@@ -2,7 +2,6 @@ package cn.edu.lnsf.service.impl;
 
 import cn.edu.lnsf.dao.StoreMapper;
 import cn.edu.lnsf.entity.PageBean;
-import cn.edu.lnsf.entity.Product;
 import cn.edu.lnsf.entity.Store;
 import cn.edu.lnsf.entity.StoreExample;
 import cn.edu.lnsf.service.StoreService;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -104,5 +102,12 @@ public class StoreServiceImpl implements StoreService {
         example.createCriteria().andStatusEqualTo(1);
         List<Store> stores = storeMapper.selectByExample(example);
         return stores;
+    }
+
+    public Store getByUid(int uid) {
+        StoreExample example = new StoreExample();
+        example.createCriteria().andUseridEqualTo(uid);
+        List<Store> stores = storeMapper.selectByExample(example);
+        return stores.get(0);
     }
 }

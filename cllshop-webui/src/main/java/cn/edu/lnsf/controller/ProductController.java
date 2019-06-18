@@ -3,6 +3,7 @@ package cn.edu.lnsf.controller;
 import cn.edu.lnsf.entity.PageBean;
 import cn.edu.lnsf.entity.Product;
 import cn.edu.lnsf.entity.SmallType;
+import cn.edu.lnsf.entity.Store;
 import cn.edu.lnsf.service.ProductsService;
 import cn.edu.lnsf.service.SmallTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +37,9 @@ public class ProductController {
         if(curPage==null){
             curPage = "1";
         }
+        Store storeInfo = (Store)request.getSession().getAttribute("storeInfo");
         int curpage = Integer.parseInt(curPage);
-        PageBean pageInfo = productsService.getPageData(curpage);
+        PageBean pageInfo = productsService.getPageData(curpage,storeInfo.getId());
         request.setAttribute("pageInfo",pageInfo);
         return "forward:/admin/jsp/productList.jsp";
     }

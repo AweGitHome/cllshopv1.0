@@ -30,5 +30,6 @@ public interface StoreService {
     PageBean getAudPageData(int curPage);
     int passStoreRegi(Store store);
     List<Store> getRegStore();
+    Store getByUid(int uid);
 
 }
