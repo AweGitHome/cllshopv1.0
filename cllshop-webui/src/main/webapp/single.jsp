@@ -21,6 +21,7 @@
             if(stocknum == 0){
                 alert("所选商品无库存!")
             }else {
+                alert("已添加至购物车!")
                 $.cookie(name,id,{path:"/",expires:cookietime});
             }
             //alert(name+","+id);

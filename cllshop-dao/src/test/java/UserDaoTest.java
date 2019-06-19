@@ -1,4 +1,6 @@
 import cn.edu.lnsf.dao.*;
+import cn.edu.lnsf.entity.Order;
+import cn.edu.lnsf.entity.OrderExample;
 import cn.edu.lnsf.entity.Product;
 import cn.edu.lnsf.entity.ProductExample;
 import org.junit.Test;
@@ -28,9 +30,7 @@ public class UserDaoTest {
 
     @Test
     public void test1(){
-        ProductExample example = new ProductExample();
-        example.setOrderByClause("createtime desc limit 8");
-        List<Product> products = productMapper.selectByExample(example);
+        List<Order> orders = orderMapper.selectOrderByStoreid(63);
         return;
     }
 }

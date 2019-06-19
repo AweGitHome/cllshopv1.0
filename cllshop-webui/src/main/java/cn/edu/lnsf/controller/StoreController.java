@@ -1,9 +1,8 @@
 package cn.edu.lnsf.controller;
 
-import cn.edu.lnsf.entity.PageBean;
-import cn.edu.lnsf.entity.Product;
-import cn.edu.lnsf.entity.Store;
-import cn.edu.lnsf.entity.User;
+import cn.edu.lnsf.entity.*;
+import cn.edu.lnsf.service.OrderService;
+import cn.edu.lnsf.service.ProductsService;
 import cn.edu.lnsf.service.StoreService;
 import cn.edu.lnsf.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +21,8 @@ public class StoreController {
 
     private StoreService storeService;
     private UserService userService;
+    private OrderService orderService;
+    private ProductsService productsService;
 
     @Autowired
     public void setStoreService(StoreService storeService) {
@@ -30,6 +31,16 @@ public class StoreController {
 
     @Autowired
     public void setUserService(UserService userService) { this.userService = userService; }
+
+    @Autowired
+    public void setOrderService(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
+    @Autowired
+    public void setProductsService(ProductsService productsService) {
+        this.productsService = productsService;
+    }
 
     @RequestMapping("register")
     @ResponseBody
@@ -79,6 +90,19 @@ public class StoreController {
         return "forward:/admin/jsp/auditing.jsp";
     }
 
+    @RequestMapping("showOrders.html")
+    public String showOrdList(/*String curPage,*/ HttpServletRequest request) {
+        Store store = (Store) request.getSession().getAttribute("storeInfo");
+        if (store == null){
+            return null;
+        }
+        List<Order> orders = storeService.getOrdByStoreid(store.getId());
+        request.setAttribute("orders",orders);
+        return "forward:/admin/jsp/storeshoworder.jsp";
+    }
+
+
+
     @RequestMapping("passRegister")
     @ResponseBody
     Map<String, Object> passRegister(Store store) {
@@ -97,5 +121,16 @@ public class StoreController {
         return "forward:/store.jsp";
     }
 
+    @RequestMapping("changeOrderStatus")
+    @ResponseBody
+    public void changeOrderStatus(Order order){
+        List<OrdersProduct> ordersProducts = orderService.getOrderDetailByOid(order.getId());
+        for(OrdersProduct ordersProduct:ordersProducts){
+            Product product = ordersProduct.getProduct();
+            product.setStock(product.getStock()+ordersProduct.getNum());
+            productsService.updateProduct(product);
+        }
+        orderService.updateByOid(order);
+    }
 }
 

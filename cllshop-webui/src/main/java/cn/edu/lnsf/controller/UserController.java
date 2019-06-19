@@ -75,6 +75,18 @@ public class UserController {
         return map;
     }
 
+    @RequestMapping("checkpassword")
+    @ResponseBody
+    Map<String,Object> checkPassword(User user){
+        Map<String,Object> map = new HashMap<>();
+        if(userService.checkPasswordIsRight(user)){
+            map.put("msg","原密码正确!");
+        }else{
+            map.put("msg","原密码错误!");
+        }
+        return map;
+    }
+
     @ResponseBody
     @RequestMapping("checkEmail")
     Map<String,Object> checkEmail(User user,HttpServletRequest request){
@@ -93,6 +105,31 @@ public class UserController {
             return map;
         } catch (Exception e) {
             map.put("msg","发送失败");
+            return map;
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping("checkEmail1")
+    Map<String,Object> checkEmail1(User user,HttpServletRequest request){
+        Map<String,Object> map = new HashMap<>();
+        if(userService.checkEmailIsUsed(user)){
+            map.put("msg","该邮箱已注册！");
+            try {
+                String code = CodeUtils.getCode();
+                String content = "您的验证码为<span style='color:red;'>"+code+"</span>,请于30分钟内完成验证，感谢您的配合";
+                MailUtils.sendMail(user.getEmail(),content);
+                request.getSession().setAttribute("code",code);
+                //session.setAttribute();
+                map.put("msg","发送成功");
+                return map;
+            } catch (Exception e) {
+                map.put("msg","发送失败");
+                return map;
+            }
+
+        }else {
+            map.put("msg","该邮箱与账号注册邮箱不符！");
             return map;
         }
     }
@@ -141,6 +178,21 @@ public class UserController {
         User user = userService.getUserById(userId);
         request.setAttribute("user",user);
         return "forward:/updateinfo.jsp";
+    }
+
+    @RequestMapping("updatepassword")
+    @ResponseBody
+    Map<String,Object> updatepassword(User user,HttpServletRequest request){
+        Map<String,Object> map = new HashMap<>();
+        int index = userService.updateUser(user);
+        if(index!=0){
+            request.getSession().removeAttribute("userInfo");
+            map.put("msg","修改成功");
+
+        }else{
+            map.put("msg","修改失败");
+        }
+        return map;
     }
 
     @RequestMapping("exit")

@@ -1,10 +1,8 @@
 package cn.edu.lnsf.service.impl;
 
+import cn.edu.lnsf.dao.OrderMapper;
 import cn.edu.lnsf.dao.StoreMapper;
-import cn.edu.lnsf.entity.PageBean;
-import cn.edu.lnsf.entity.Product;
-import cn.edu.lnsf.entity.Store;
-import cn.edu.lnsf.entity.StoreExample;
+import cn.edu.lnsf.entity.*;
 import cn.edu.lnsf.service.StoreService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -19,10 +17,16 @@ import java.util.List;
 @Service
 public class StoreServiceImpl implements StoreService {
     private StoreMapper storeMapper;
+    private OrderMapper orderMapper;
 
     @Autowired
     public void setStoreMapper(StoreMapper storeMapper) {
         this.storeMapper = storeMapper;
+    }
+
+    @Autowired
+    public void setOrderMapper(OrderMapper orderMapper) {
+        this.orderMapper = orderMapper;
     }
 
     public int storeRegister(Store store) {
@@ -65,6 +69,12 @@ public class StoreServiceImpl implements StoreService {
         return audstores;
     }
 
+
+    public List<Order> getOrdByStoreid(int storeid) {
+        return orderMapper.selectOrderByStoreid(storeid);
+    }
+
+
     public PageBean getPageData(int curPage) {
         PageBean pageBean = new PageBean();
         PageHelper.startPage(curPage,pageBean.getPageSize());
@@ -104,5 +114,12 @@ public class StoreServiceImpl implements StoreService {
         example.createCriteria().andStatusEqualTo(1);
         List<Store> stores = storeMapper.selectByExample(example);
         return stores;
+    }
+
+    public Store getByUid(int uid) {
+        StoreExample example = new StoreExample();
+        example.createCriteria().andUseridEqualTo(uid);
+        List<Store> stores = storeMapper.selectByExample(example);
+        return stores.get(0);
     }
 }

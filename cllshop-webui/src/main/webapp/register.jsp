@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="commonheader.jsp"></jsp:include>
 <title>注册</title>
+<%--<script src="${pageContext.request.contextPath}/js/md5.js"></script>--%>
     <script type="application/x-javascript">
         $(document).ready(function () {
 
@@ -33,7 +34,7 @@
             });
             $("#submit").click(function () {
                 var username = $("#username").val();
-                var password = $("#password").val();
+                var password= $("#password").val();
                 var email = $("#email").val();
                 var cfmpass = $("#cfmpassword").val();
                 var user = {username:username,password:password,email:email};

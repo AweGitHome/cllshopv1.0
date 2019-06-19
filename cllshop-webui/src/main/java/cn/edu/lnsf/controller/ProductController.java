@@ -141,8 +141,8 @@ public class ProductController {
     }
 
     @RequestMapping("goProdEditPage")
-    String goProdEditPage(HttpServletRequest request,int id){
-        Product product = productsService.getOneByIdAndSid(id,1);
+    String goProdEditPage(HttpServletRequest request,int id,int sid){
+        Product product = productsService.getOneByIdAndSid(id,sid);
         product.setPrice(product.getPrice()/100);
         request.setAttribute("product",product);
         return "forward:/admin/jsp/product-edit.jsp";
@@ -150,6 +150,7 @@ public class ProductController {
 
     @RequestMapping("edit")
     String edit(Product product,HttpServletRequest request){
+        product.setPrice(product.getPrice()*100);
         if(productsService.updateProduct(product)!=0){
             request.setAttribute("msg","修改成功");
             return "forward:/admin/jsp/product-add.jsp";

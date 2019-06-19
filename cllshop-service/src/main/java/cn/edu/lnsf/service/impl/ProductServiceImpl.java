@@ -22,7 +22,7 @@ public class ProductServiceImpl implements ProductsService {
     ProductMapper productMapper;
 
     public List<Product> getAllProducts() {
-        return productMapper.selAllByStoreId(1);
+        return productMapper.selAllByStoreId(63);
     }
 
     public List<Product> getProductsByCondition(Product product) {
