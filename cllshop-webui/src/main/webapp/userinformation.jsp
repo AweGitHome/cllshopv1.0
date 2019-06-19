@@ -35,6 +35,7 @@
                     <br/>
                     <div class="buttons kiosk-input-area">
                         <a class="acount-btn" href="${pageContext.request.contextPath}/user/showinfo2?userId=${user.id}">修改信息</a>
+                        <a class="acount-btn" href="${pageContext.request.contextPath}/changeofpassword.jsp?userId=${user.id}">修改密码</a>
                     </div>
                </div>
             </div>

@@ -225,4 +225,9 @@
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectOrderByStoreid" resultMap="BaseResultMap">
+    SELECT * FROM orders WHERE id IN(
+    SELECT DISTINCT orders.id FROM orders,orders_product,products
+    WHERE orders.id=orders_product.orderid AND orders_product.productid=products.id AND products.storeId = #{id})
+  </select>
 </mapper>

@@ -19,11 +19,15 @@
            var num = 0;
            for(var j = 0; j < numList.length; j++){
                 num += numList[j].innerHTML;
-           }if (num == 0){
+           }
+           if (num == 0){
                alert("请选择购买数量!");
            } else {
                var param = [];
                for(var i = 0; i < idList.length; i++){
+                   if (numList[i] == undefined){
+                       continue;
+                   }
                    param.push({productid:idList[i].innerHTML,num:numList[i].innerHTML,unit:unitList[i].innerHTML});
                }
                $.ajax({

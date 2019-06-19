@@ -45,7 +45,7 @@
                         <span style="color: red; "></span>
                     </div>
                     <div class="form-group">
-                        <input type="checkbox" id="remember" name="remember" value="off">记住用户名与密码
+                        <a href="${pageContext.request.contextPath}/findpassword.jsp">忘记密码</a>
                     </div>
                     <div id="errorTips" style="color:red;display:inline;">${msg}</div>
                     <div id="rightTips" style="color:green;display:inline;">${msg1}</div>

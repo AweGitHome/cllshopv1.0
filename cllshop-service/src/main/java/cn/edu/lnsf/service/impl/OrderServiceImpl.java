@@ -68,4 +68,19 @@ public class OrderServiceImpl implements OrderService {
         List<OrdersProduct> list = ordersProductMapper.selByOrderId(oid);
         return list;
     }
+
+    public int returnOrderbyOid(Order order) {
+        orderMapper.updateByPrimaryKeySelective(order);
+        return orderMapper.updateByPrimaryKeySelective(order);
+    }
+
+    public Order getOrderByid(Integer oid) {
+        OrderExample orderExample = new OrderExample();
+        orderExample.createCriteria().andIdEqualTo(oid);
+        return orderMapper.selectByExample(orderExample).get(0);
+    }
+
+    public int updateByOid(Order order) {
+        return  orderMapper.updateByPrimaryKeySelective(order);
+    }
 }

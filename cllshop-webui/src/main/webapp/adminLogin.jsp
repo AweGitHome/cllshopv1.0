@@ -6,12 +6,12 @@
     <title>后台系统登录界面</title>
     <link type="text/css" href="${pageContext.request.contextPath}/admin/layui/css/layui.css" rel="stylesheet" />
     <link type="text/css" href="${pageContext.request.contextPath}/admin/css/self/login-normal.css" rel="stylesheet"/>
-    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/md5.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/md5.js"></script>
     <script>
         function login(){
             var username = $("#username").val();
-            var temp = $("#password").val();
+            temp = $("#password").val();
             if (username != "" && temp != ""){
                 var password= $.md5(temp);
                 console.log(password);
@@ -43,7 +43,7 @@
         </div>
         <!--layui-form-input/label样式布局-->
         <div id="submitItem">
-            <input class="layui-btn layui-btn-fluid" type="button" value="登录"  onclick="login()">
+            <input type="button" value="登录" class="layui-btn layui-btn-fluid" onclick="login()"/>
         </div>
         <div>
             <span class="layui-text">${msg}</span>

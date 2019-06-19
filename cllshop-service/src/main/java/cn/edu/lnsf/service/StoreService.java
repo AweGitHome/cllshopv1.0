@@ -1,5 +1,6 @@
 package cn.edu.lnsf.service;
 
+import cn.edu.lnsf.entity.Order;
 import cn.edu.lnsf.entity.PageBean;
 import cn.edu.lnsf.entity.Store;
 
@@ -27,6 +28,7 @@ public interface StoreService {
     List<Store> getAllStore();
     PageBean getPageData(int curPage);
     List<Store> getAudStore();
+    List<Order> getOrdByStoreid(int storeid);
     PageBean getAudPageData(int curPage);
     int passStoreRegi(Store store);
     List<Store> getRegStore();

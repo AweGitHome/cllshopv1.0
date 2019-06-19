@@ -1,16 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>layout 后台大布局 - Layui</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/layui/css/layui.css">
-</head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   <%@include file="common.jsp"%>
-  
   <div class="layui-body">
     <!-- 内容主体区域 -->
     <div style="padding: 15px;">

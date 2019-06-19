@@ -62,7 +62,7 @@
 				<legend>内容管理 - 商品列表</legend>
 				<div class="layui-field-box">
 					<div class="layui-btn-group">
-						<button class="layui-btn layui-btn-xs layui-btn-normal dw-dailog" dw-url="${pageContext.request.contextPath}/admin/product-add.jsp" dw-title="新增商品" dw-width="100%" dw-height="100%">
+						<button class="layui-btn layui-btn-xs layui-btn-normal dw-dailog" dw-url="${pageContext.request.contextPath}/admin/jsp/product-add.jsp" dw-title="新增商品" dw-width="100%" dw-height="100%">
 							<i class="layui-icon">&#xe654;</i>新增
 						</button>
 						<button class="layui-btn layui-btn-xs dw-refresh">
@@ -115,7 +115,7 @@
 										</button>
 									</c:if>
 								</td>
-								<td><fmt:formatDate value="${product.hottime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+								<td><fmt:formatDate value="${product.hottime }"  pattern="yyyy-MM-dd HH:mm:ss"/></td>
 								<td><fmt:formatDate value="${product.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 								<td><fmt:formatDate value="${product.updatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 								<td>
@@ -124,7 +124,7 @@
 								</td>
 								<td class="text-center">
 									<div class="layui-btn-group">
-										<button class="layui-btn layui-btn-xs layui-btn-normal dw-dailog" dw-url="${pageContext.request.contextPath}/product/goProdEditPage?id=${product.id}" dw-title="编辑用户" dw-width="80%" dw-height="80%">
+										<button class="layui-btn layui-btn-xs layui-btn-normal dw-dailog" dw-url="${pageContext.request.contextPath}/product/goProdEditPage?id=${product.id}&sid=${storeInfo.id}" dw-title="编辑用户" dw-width="80%" dw-height="80%">
 											<i class="layui-icon">&#xe642;</i>编辑
 										</button>
 										<button class="layui-btn layui-btn-xs layui-btn-danger dw-delete" dw-url="#" dw-title="${product.name }">

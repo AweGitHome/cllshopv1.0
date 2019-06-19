@@ -47,4 +47,5 @@ public interface UserService {
 
     User getUserById(int userId);
 
+    boolean checkPasswordIsRight(User user);
 }

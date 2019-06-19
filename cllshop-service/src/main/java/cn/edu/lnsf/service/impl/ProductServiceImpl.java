@@ -21,8 +21,8 @@ public class ProductServiceImpl implements ProductsService {
     @Autowired
     ProductMapper productMapper;
 
-    public List<Product> getAllProducts(int sid) {
-        return productMapper.selAllByStoreId(sid);
+    public List<Product> getAllProducts() {
+        return productMapper.selAllByStoreId(63);
     }
 
     public List<Product> getProductsByCondition(Product product) {
@@ -80,10 +80,10 @@ public class ProductServiceImpl implements ProductsService {
         return 0;
     }
 
-    public PageBean getPageData(int curPage,int sid) {
+    public PageBean getPageData(int curPage) {
         PageBean pageBean = new PageBean();
         PageHelper.startPage(curPage,pageBean.getPageSize());
-        List<Product> list = getAllProducts(sid);
+        List<Product> list = getAllProducts();
         //取分页信息
         PageInfo<Product> pageInfo = new PageInfo<Product>(list);
         long total = pageInfo.getTotal();

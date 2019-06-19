@@ -19,6 +19,7 @@
       <result property="name" column="pname"/>
       <result property="images" column="pimages"/>
       <result property="price" column="pprice"/>
+      <result property="stock" column="pstock"/>
     </association>
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -222,7 +223,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selByOrderId" resultMap="MyResultMap">
-    select orders_product.*,products.id pid,products.name pname,products.price pprice,products.images pimages
+    select orders_product.*,products.id pid,products.name pname,products.price pprice,products.images pimages,products.stock pstock
     from orders_product,products
     <where>
       and orders_product.productid=products.id

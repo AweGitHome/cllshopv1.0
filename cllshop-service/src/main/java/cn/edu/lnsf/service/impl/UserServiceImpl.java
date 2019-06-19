@@ -70,7 +70,9 @@ public class UserServiceImpl implements UserService {
     }
 
     public int updateUser (User user){
-        return userMapper.updateByPrimaryKeySelective(user);
+        UserExample example = new UserExample();
+        example.createCriteria().andUsernameEqualTo(user.getUsername());
+        return userMapper.updateByExampleSelective(user,example);
     }
 
     public User  getUserByUsername(String userName){
@@ -85,5 +87,14 @@ public class UserServiceImpl implements UserService {
         example.createCriteria().andIdEqualTo(userId);
         List<User> user = userMapper.selectByExample(example);
         return user.get(0);
+    }
+
+    public boolean checkPasswordIsRight(User user) {
+        UserExample example = new UserExample();
+        example.createCriteria().andPasswordEqualTo(user.getPassword());
+        if(userMapper.selectByExample(example).size()!=0){
+            return true;
+        }
+        return false;
     }
 }

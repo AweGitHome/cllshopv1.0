@@ -19,15 +19,14 @@ public class AdminController {
     private StoreService storeService;
 
     @Autowired
-    public void setStoreService(StoreService storeService) {
-        this.storeService = storeService;
-    }
-
-    @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
 
+    @Autowired
+    public void setStoreService(StoreService storeService) {
+        this.storeService = storeService;
+    }
 
     @RequestMapping("login")
     String login(User user, HttpSession session, HttpServletRequest request){
@@ -38,7 +37,7 @@ public class AdminController {
         }
         if(login.getRole()==0){
             session.setAttribute("userInfo",login);
-            return "redirect:/admin/jsp/index.jsp";
+            return "redirect:/store/showAudstoreList";
         }
         if(login.getRole()==2){
             Store storeInfo = storeService.getByUid(login.getId());

@@ -28,4 +28,6 @@ public interface StoreMapper {
     int updateByPrimaryKeySelective(Store record);
 
     int updateByPrimaryKey(Store record);
+
+
 }
