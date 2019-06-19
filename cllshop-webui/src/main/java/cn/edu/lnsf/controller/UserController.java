@@ -1,7 +1,6 @@
 package cn.edu.lnsf.controller;
 
 import cn.edu.lnsf.entity.User;
-import cn.edu.lnsf.service.BigTypeService;
 import cn.edu.lnsf.service.UserService;
 import cn.edu.lnsf.util.CodeUtils;
 import cn.edu.lnsf.util.MailUtils;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
@@ -24,13 +22,6 @@ import java.util.Map;
 public class UserController {
 
     private UserService userService;
-    private BigTypeService bigTypeService;
-
-    @Autowired
-    public void setBigTypeService(BigTypeService bigTypeService) {
-        this.bigTypeService = bigTypeService;
-    }
-
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
