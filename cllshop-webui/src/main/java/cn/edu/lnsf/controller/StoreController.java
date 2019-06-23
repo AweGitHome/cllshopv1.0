@@ -125,10 +125,17 @@ public class StoreController {
     @ResponseBody
     public void changeOrderStatus(Order order){
         List<OrdersProduct> ordersProducts = orderService.getOrderDetailByOid(order.getId());
-        for(OrdersProduct ordersProduct:ordersProducts){
-            Product product = ordersProduct.getProduct();
-            product.setStock(product.getStock()+ordersProduct.getNum());
-            productsService.updateProduct(product);
+        if(order.getStatus()==3){
+            for(OrdersProduct ordersProduct:ordersProducts){
+                Product product = ordersProduct.getProduct();
+                productsService.updateProduct(product);
+            }
+        }else{
+            for(OrdersProduct ordersProduct:ordersProducts){
+                Product product = ordersProduct.getProduct();
+                product.setStock(product.getStock()+ordersProduct.getNum());
+                productsService.updateProduct(product);
+            }
         }
         orderService.updateByOid(order);
     }

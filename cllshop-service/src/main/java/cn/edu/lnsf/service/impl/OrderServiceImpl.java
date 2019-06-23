@@ -70,7 +70,6 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public int returnOrderbyOid(Order order) {
-        orderMapper.updateByPrimaryKeySelective(order);
         return orderMapper.updateByPrimaryKeySelective(order);
     }
 
