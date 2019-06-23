@@ -114,6 +114,8 @@ public class ProductController {
     @RequestMapping("create")
     String createProd(Product product,HttpServletRequest request){
         Map<String,Object> map = new HashMap<>();
+        Store store = (Store)request.getSession().getAttribute("storeInfo");
+        product.setStoreid(store.getId());
         if(productsService.addProduct(product)!=0){
             request.setAttribute("msg","添加成功");
             return "forward:/admin/jsp/product-add.jsp";

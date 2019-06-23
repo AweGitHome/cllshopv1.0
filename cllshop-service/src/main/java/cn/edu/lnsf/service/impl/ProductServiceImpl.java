@@ -56,7 +56,6 @@ public class ProductServiceImpl implements ProductsService {
     }
 
     public int addProduct(Product product) {
-        product.setStoreid(1);
         product.setCreatetime(new Date());
         product.setUpdatetime(new Date());
         product.setPrice(product.getPrice()*100);

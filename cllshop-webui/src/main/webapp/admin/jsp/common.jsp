@@ -27,6 +27,9 @@
                     async:true,
                     success:function () {
                         window.location.href = "${pageContext.request.contextPath}/adminLogin.jsp"
+                    },
+                    error:function () {
+                        window.location.href = "${pageContext.request.contextPath}/adminLogin.jsp"
                     }
                 });
             })
@@ -44,7 +47,7 @@
         <li class="layui-nav-item">
             <a href="javascript:;">
                 <%--<img src="${pageContext.request.contextPath}/uploadProImg/1.bmp" class="layui-nav-img">--%>
-                ${userInfo.username}
+                ${userInfo1.username}
             </a>
             <dl class="layui-nav-child">
                 <dd><a href="">基本资料</a></dd>
@@ -60,10 +63,10 @@
         <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
         <ul class="layui-nav layui-nav-tree" lay-filter="test">
             <li class="layui-nav-item"><a class="layui" href="${pageContext.request.contextPath}/admin/jsp/index.jsp">控制台</a></li>
-            <c:if test="${userInfo.role == 0}">
+            <c:if test="${userInfo1.role == 0}">
                 <li class="layui-nav-item"><a class="layui" href="${pageContext.request.contextPath}/store/showAudstoreList">入驻审核</a></li>
             </c:if>
-            <c:if test="${userInfo.role != 0}">
+            <c:if test="${userInfo1.role != 0}">
                 <li class="layui-nav-item"><a class="layui" href="${pageContext.request.contextPath}/store/showOrders.html">订单列表</a></li>
                 <li class="layui-nav-item"><a class="layui" href="${pageContext.request.contextPath}/product/store_manage.html">商品列表</a></li>
             </c:if>

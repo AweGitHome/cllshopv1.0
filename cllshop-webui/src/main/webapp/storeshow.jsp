@@ -25,7 +25,6 @@
                             <h3><a href="${pageContext.request.contextPath }/product/showPro/?productId=${pro.id}">${pro.name}</a></h3>
                             <div class="price">
                                 <h5 class="item_price">￥${pro.price/100}</h5>
-                                <a href="#" class="item_add">加入购物车</a>
                                 <div class="clearfix"> </div>
                             </div>
                         </div>

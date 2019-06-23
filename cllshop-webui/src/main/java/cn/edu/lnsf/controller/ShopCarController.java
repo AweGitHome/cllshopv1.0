@@ -44,7 +44,8 @@ public class ShopCarController {
             System.out.println("没有cookie");
         } else {
             for(Cookie cookie : cookies){
-                if(cookie.getName().indexOf("id")!=0||"JSESSIONID".equals(cookie.getName())){
+                System.out.println(cookie.getValue());
+                if(cookie.getValue().equals("null") || cookie.getName().indexOf("id")!=0||"JSESSIONID".equals(cookie.getName())){
                     continue;
                 }
                 System.out.println(cookie.getValue());

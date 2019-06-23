@@ -50,7 +50,7 @@ public class StoreController {
         User user = new User();
         user.setId(store.getUserid());
         user.setRole(2);
-        userService.updateUser(user);
+        userService.updateUserByid(user);
         if (index != 0) {
             map.put("msg", "入驻申请提交成功");
         } else {

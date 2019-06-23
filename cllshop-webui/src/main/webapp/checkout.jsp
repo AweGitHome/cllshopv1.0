@@ -70,7 +70,7 @@
             </thead>
             <tbody>
             <c:forEach items="${order_products}" var="prod" varStatus="v">
-                <span style="display: none" name="id">${prod.id}</span>
+                <span style="display: none" name="id" class="id">${prod.id}</span>
                 <tr class="trclass">
                     <td class="tdone xuhao">${v.count}</td>
                     <td class="ring-in"><a href="single.html" class="at-in"><img src="${prod.images}" class="img-responsive" alt=""></a>
@@ -83,7 +83,7 @@
                     <td class="tdfour"><span class="#">${prod.stock}</span></td>
                     <td class="tdfour"><span>￥</span><span class="unit" name="unit">${prod.price/100}</span></td>
                     <td class="tdfive"><span class="subtal">0</span></td>
-                    <td class="tdsix"><button class="del">删除</button></td>
+                    <td class="tdsix"><button class="del"><span style="display: none" name="id" class="id">${prod.id}</span>删除</button></td>
                 </tr>
             </c:forEach>
             <tr><td   colspan="6"; class="talast"><span>商品一共 <span class="goods_num">0</span> 件; 共计花费 <span class="pricetal" id="cost">0</span> 元; 其中最贵的商品单价是 <span class="pricest">0</span> 元</span></td></tr>

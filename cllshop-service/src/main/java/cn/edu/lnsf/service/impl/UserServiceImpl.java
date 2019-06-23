@@ -75,6 +75,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.updateByExampleSelective(user,example);
     }
 
+    public int updateUserByid(User user) {
+        return userMapper.updateByPrimaryKeySelective(user);
+    }
+
     public User  getUserByUsername(String userName){
        UserExample example = new UserExample();
        example.createCriteria().andUsernameEqualTo(userName);

@@ -80,6 +80,10 @@ window.onload = function(){
     cart.prototype.del = function(obtn){
         var odel = obtn.parentNode.parentNode;
         var oparent = odel.parentNode;
+        var child = obtn.childNodes;
+        var id = child[0].innerHTML;
+        var n = parseInt(id);
+        $.cookie("id"+n,null,{ path: '/'});
         oparent.removeChild(odel);
         this.ogood_num.innerHTML = this.getNumbertal();
         this.opricetal.innerHTML = this.gettotal();

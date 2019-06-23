@@ -36,13 +36,13 @@ public class AdminController {
             return "forward:/adminLogin.jsp";
         }
         if(login.getRole()==0){
-            session.setAttribute("userInfo",login);
+            session.setAttribute("userInfo1",login);
             return "redirect:/store/showAudstoreList";
         }
         if(login.getRole()==2){
             Store storeInfo = storeService.getByUid(login.getId());
             session.setAttribute("storeInfo",storeInfo);
-            session.setAttribute("userInfo",login);
+            session.setAttribute("userInfo1",login);
             return "redirect:/product/store_manage.html";
         }
         request.setAttribute("msg","请使用管理员账号登录");

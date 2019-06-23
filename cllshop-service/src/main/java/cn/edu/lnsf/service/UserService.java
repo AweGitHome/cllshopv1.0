@@ -43,6 +43,8 @@ public interface UserService {
 
     int updateUser(User user);
 
+    int updateUserByid(User user);
+
     User getUserByUsername(String userName);
 
     User getUserById(int userId);

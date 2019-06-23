@@ -18,7 +18,9 @@ public class LogFilter implements Filter {
         if(request.getSession().getAttribute("userInfo")==null){
             String requestURI = request.getRequestURI();
             if(requestURI.contains("admin")){
-                response.sendRedirect("/adminLogin.jsp");
+                if (request.getSession().getAttribute("userInfo1")==null){
+                    response.sendRedirect("/adminLogin.jsp");
+                }
             }else{
                 response.sendRedirect("/login.jsp");
             }
